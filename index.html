@@ -32,6 +32,12 @@
                     ✅ Economia de água<br>✅ Energia renovável<br>✅ Controle biológico<br>✅ Certificações<br>✅ Dicas para pequenos produtores
                 </div>
             </div>
+            <div class="chat-quick-buttons">
+                <button class="quick-btn" data-pergunta="Como economizar água na irrigação?">💧 Água</button>
+                <button class="quick-btn" data-pergunta="O que é ILPF?">🌳 ILPF</button>
+                <button class="quick-btn" data-pergunta="Dicas para pequeno produtor">👨‍🌾 Dicas</button>
+                <button class="quick-btn" data-pergunta="Energia solar no campo">☀️ Energia</button>
+            </div>
             <div class="chat-input-area">
                 <input type="text" id="perguntaModal" placeholder="Digite sua pergunta..." autocomplete="off">
                 <button id="enviarModal"><i class="fas fa-paper-plane"></i> Enviar</button>
@@ -41,10 +47,38 @@
     </div>
 </div>
 
+<!-- MODAL DE LOGIN (ENTRAR) -->
+<div id="loginModal" class="login-modal">
+    <div class="login-modal-content">
+        <div class="login-modal-header">
+            <h3><i class="fas fa-sign-in-alt"></i> Acesse sua conta</h3>
+            <span class="login-modal-fechar">&times;</span>
+        </div>
+        <div class="login-modal-body">
+            <p>Bem-vindo ao AgroForte! Faça login para acessar conteúdos exclusivos.</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> E-mail</label>
+                    <input type="email" id="loginEmail" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Senha</label>
+                    <input type="password" id="loginSenha" placeholder="••••••" required>
+                </div>
+                <button type="submit" class="btn-primary"><i class="fas fa-arrow-right"></i> Entrar</button>
+                <p class="login-demo">Demo: qualquer e-mail/senha (simulação)</p>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- BOTÃO MODO ESCURO -->
 <div class="dark-mode-btn-container">
-    <button id="darkModeToggle" aria-label="Alternar modo escuro"><i class="fas fa-moon"></i> Modo escuro</button>
+    <button id="darkModeToggle"><i class="fas fa-moon"></i> Modo escuro</button>
 </div>
+
+<!-- BOTÃO VOLTAR AO TOPO -->
+<button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
 <!-- HEADER -->
 <header class="header">
@@ -57,10 +91,12 @@
             <ul class="nav-list">
                 <li><a href="#home" class="active">Início</a></li>
                 <li><a href="#sustentabilidade">Sustentabilidade</a></li>
+                <li><a href="#carrossel">Galeria</a></li>
                 <li><a href="#calculadora">Calculadora</a></li>
                 <li><a href="#praticas">Boas práticas</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
+            <button class="btn-entrar" id="btnEntrar"><i class="fas fa-user"></i> Entrar</button>
             <div class="menu-hamburger">
                 <span></span><span></span><span></span>
             </div>
@@ -73,13 +109,33 @@
     <section id="home" class="hero">
         <div class="container hero-container">
             <div class="hero-text">
-                <h2>Agro forte,<br> <span>futuro sustentável</span></h2>
+                <h2 id="typed-text"></h2>
                 <p>Tecnologia, inovação e respeito ao meio ambiente para alimentar o mundo sem destruir o amanhã.</p>
                 <a href="#calculadora" class="btn-primary"><i class="fas fa-calculator"></i> Calcular economia de água</a>
             </div>
             <div class="hero-img">
                 <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&auto=format" alt="Campo sustentável" loading="lazy">
                 <p class="img-credits">Imagem: Unsplash / agricultura sustentável</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARROSSEL DE IMAGENS -->
+    <section id="carrossel" class="carrossel">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-images"></i> Práticas sustentáveis em ação</h2>
+                <p>Veja como a tecnologia e a natureza caminham juntas.</p>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-slides">
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1592982537447-6f2a6a0c9b2c?w=600&auto=format" alt="Irrigação por gotejamento"><div class="carousel-caption">Irrigação por gotejamento</div></div>
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format" alt="Energia solar no campo"><div class="carousel-caption">Energia solar no campo</div></div>
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1589923188656-9d1f3f5b1d3a?w=600&auto=format" alt="Plantio direto"><div class="carousel-caption">Plantio direto</div></div>
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&auto=format" alt="Floresta plantada"><div class="carousel-caption">Recuperação de nascentes</div></div>
+                </div>
+                <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -133,6 +189,9 @@
     <section id="contato" class="contato">
         <div class="container">
             <div class="section-header"><h2><i class="fas fa-envelope"></i> Quer saber mais?</h2><p>Envie uma mensagem e receba dicas de sustentabilidade no campo.</p></div>
+            <div class="visitor-counter">
+                <i class="fas fa-eye"></i> <span id="visitorCount">0</span> visitantes hoje
+            </div>
             <form id="formContato" class="form-contato">
                 <div class="form-group"><label for="nome"><i class="fas fa-user"></i> Nome completo *</label><input type="text" id="nome" required><span class="error-message" id="error-nome"></span></div>
                 <div class="form-group"><label for="email"><i class="fas fa-envelope"></i> E-mail *</label><input type="email" id="email" required><span class="error-message" id="error-email"></span></div>
@@ -152,12 +211,46 @@
     </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script>
+    // Efeito de digitação
+    var typed = new Typed('#typed-text', {
+        strings: ['Agro forte,<br> <span>futuro sustentável</span>'],
+        typeSpeed: 50,
+        backSpeed: 30,
+        startDelay: 500,
+        showCursor: true,
+        cursorChar: '|',
+        contentType: 'html'
+    });
+
+    // Contador de visitantes
+    let visits = localStorage.getItem('agrinho_visits');
+    if (visits) {
+        visits = parseInt(visits) + 1;
+    } else {
+        visits = 1;
+    }
+    localStorage.setItem('agrinho_visits', visits);
+    document.getElementById('visitorCount').innerText = visits;
+
+    // Botão voltar ao topo
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.style.display = 'flex';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     // MODO ESCURO
     const toggleBtn = document.getElementById('darkModeToggle');
     toggleBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
-        const icon = toggleBtn.querySelector('i');
         if (document.body.classList.contains('dark-mode')) {
             toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Modo claro';
         } else {
@@ -204,7 +297,7 @@
         else { feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Corrija os campos destacados.'; feedback.style.color = '#c7362b'; }
     });
 
-    // DESTAQUE DO LINK ATIVO NO SCROLL
+    // DESTAQUE DO LINK ATIVO
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-list a');
     window.addEventListener('scroll', () => {
@@ -213,11 +306,39 @@
         navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === `#${current}`) link.classList.add('active'); });
     });
 
-    // ==================== IA MODAL ====================
+    // CARROSSEL
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    const nextBtn = document.querySelector('.carousel-next');
+    const prevBtn = document.querySelector('.carousel-prev');
+    function showSlide(index) {
+        if (index >= totalSlides) slideIndex = 0;
+        if (index < 0) slideIndex = totalSlides - 1;
+        const offset = -slideIndex * 100;
+        document.querySelector('.carousel-slides').style.transform = `translateX(${offset}%)`;
+    }
+    nextBtn.addEventListener('click', () => { slideIndex++; showSlide(slideIndex); });
+    prevBtn.addEventListener('click', () => { slideIndex--; showSlide(slideIndex); });
+    setInterval(() => { slideIndex++; showSlide(slideIndex); }, 5000);
+
+    // MODAL LOGIN
+    const loginModal = document.getElementById('loginModal');
+    const btnEntrar = document.getElementById('btnEntrar');
+    const closeLogin = document.querySelector('.login-modal-fechar');
+    btnEntrar.addEventListener('click', () => { loginModal.style.display = 'flex'; });
+    closeLogin.addEventListener('click', () => { loginModal.style.display = 'none'; });
+    window.addEventListener('click', (e) => { if (e.target === loginModal) loginModal.style.display = 'none'; });
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Bem-vindo ao AgroForte! (simulação de login)');
+        loginModal.style.display = 'none';
+    });
+
+    // IA MODAL
     const modal = document.getElementById('iaModal');
     const bolinha = document.getElementById('iaBolinha');
     const fecharModal = document.querySelector('.ia-modal-fechar');
-
     bolinha.addEventListener('click', () => { modal.style.display = 'flex'; });
     fecharModal.addEventListener('click', () => { modal.style.display = 'none'; });
     window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
@@ -225,7 +346,8 @@
     const chatBoxModal = document.getElementById('chatBoxModal');
     const perguntaModal = document.getElementById('perguntaModal');
     const enviarModal = document.getElementById('enviarModal');
-
+    const quickBtns = document.querySelectorAll('.quick-btn');
+    
     const respostasIA = {
         "agua": "💧 A economia de água pode ser feita com irrigação por gotejamento, captação de chuva e sensores de umidade. Isso reduz o desperdício em até 60%!",
         "irrigação": "🌽 Sistemas de irrigação inteligente economizam água e aumentam a produtividade. O gotejamento é um dos mais eficientes.",
@@ -248,7 +370,6 @@
         "obrigado": "😊 Por nada! Estou aqui para ajudar na construção de um agro mais forte e verde.",
         "padrão": "🤖 Ainda estou aprendendo sobre esse tema. Pergunte sobre: água, energia, solo, bioinsumos, ILPF, certificação ou peça uma dica."
     };
-
     function getRespostaIA(pergunta) {
         const texto = pergunta.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         for (let [chave, resposta] of Object.entries(respostasIA)) {
@@ -256,7 +377,6 @@
         }
         return respostasIA["padrão"];
     }
-
     function adicionarMensagemModal(remetente, texto) {
         const div = document.createElement('div');
         div.classList.add('chat-message', remetente);
@@ -264,18 +384,17 @@
         chatBoxModal.appendChild(div);
         chatBoxModal.scrollTop = chatBoxModal.scrollHeight;
     }
-
-    function processarPerguntaModal() {
-        const pergunta = perguntaModal.value.trim();
-        if (pergunta === "") return;
-        adicionarMensagemModal('user', `<i class="fas fa-user"></i> ${pergunta}`);
-        const resposta = getRespostaIA(pergunta);
+    function processarPerguntaModal(perguntaTexto) {
+        if (perguntaTexto === "") return;
+        adicionarMensagemModal('user', `<i class="fas fa-user"></i> ${perguntaTexto}`);
+        const resposta = getRespostaIA(perguntaTexto);
         adicionarMensagemModal('bot', `<i class="fas fa-robot"></i> ${resposta}`);
-        perguntaModal.value = '';
     }
-
-    enviarModal.addEventListener('click', processarPerguntaModal);
-    perguntaModal.addEventListener('keypress', (e) => { if (e.key === 'Enter') processarPerguntaModal(); });
+    enviarModal.addEventListener('click', () => { processarPerguntaModal(perguntaModal.value); perguntaModal.value = ''; });
+    perguntaModal.addEventListener('keypress', (e) => { if (e.key === 'Enter') { processarPerguntaModal(perguntaModal.value); perguntaModal.value = ''; } });
+    quickBtns.forEach(btn => {
+        btn.addEventListener('click', () => { processarPerguntaModal(btn.getAttribute('data-pergunta')); });
+    });
 </script>
 </body>
 </html>
