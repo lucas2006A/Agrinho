@@ -205,24 +205,20 @@
     const bolinha = document.getElementById('iaBolinha');
     const fecharModal = document.querySelector('.ia-modal-fechar');
 
-    // Abrir modal ao clicar na bolinha
     bolinha.addEventListener('click', () => {
         modal.style.display = 'flex';
     });
 
-    // Fechar modal
     fecharModal.addEventListener('click', () => {
         modal.style.display = 'none';
     });
 
-    // Fechar ao clicar fora do conteúdo
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.style.display = 'none';
         }
     });
 
-    // Lógica da IA (mesma do chat, agora no modal)
     const chatBoxModal = document.getElementById('chatBoxModal');
     const perguntaModal = document.getElementById('perguntaModal');
     const enviarModal = document.getElementById('enviarModal');
