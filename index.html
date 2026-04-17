@@ -3,181 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="Site sobre agro sustentável - equilíbrio entre produção forte e preservação ambiental">
+    <meta name="description" content="Agro forte, futuro sustentável – equilíbrio entre produção e meio ambiente">
     <meta name="agrinho" content="concurso2026">
-    <title>Agro Forte · Futuro Sustentável</title>
+    <title>Agro Sustentável | Concurso Agrinho</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="dark-mode-btn-container">
-        <button id="darkModeToggle" aria-label="Ativar modo escuro">🌙 Modo escuro</button>
+<div class="dark-mode-btn-container">
+    <button id="darkModeToggle" aria-label="Alternar modo escuro">🌙 Modo escuro</button>
+</div>
+
+<header class="header">
+    <div class="container header-container">
+        <div class="logo">
+            <h1>🌾 Agro<span>Forte</span></h1>
+            <p class="tagline">Produzir com consciência, colher futuro</p>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="#home" class="active">Início</a></li>
+                <li><a href="#sustentabilidade">Sustentabilidade</a></li>
+                <li><a href="#calculadora">Calculadora</a></li>
+                <li><a href="#praticas">Boas práticas</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="menu-hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
     </div>
+</header>
 
-    <header class="header">
-        <div class="container header-container">
-            <div class="logo">
-                <h1>🌾 Agro<span>Forte</span></h1>
-                <p class="tagline">Produzir com consciência, colher futuro</p>
+<main>
+    <section id="home" class="hero">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <h2>Agro forte,<br> <span>futuro sustentável</span></h2>
+                <p>Tecnologia, inovação e respeito ao meio ambiente para alimentar o mundo sem destruir o amanhã.</p>
+                <a href="#calculadora" class="btn-primary">🌱 Calcular economia de água</a>
             </div>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="#home" class="active">Início</a></li>
-                    <li><a href="#sustentabilidade">Sustentabilidade</a></li>
-                    <li><a href="#calculadora">Calculadora</a></li>
-                    <li><a href="#praticas">Boas práticas</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-                <div class="menu-hamburger">
-                    <span></span><span></span><span></span>
-                </div>
-            </nav>
+            <div class="hero-img">
+                <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&auto=format" alt="Campo sustentável" loading="lazy">
+                <p class="img-credits">Imagem: Unsplash / agricultura sustentável</p>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <!-- HERO SECTION -->
-        <section id="home" class="hero">
-            <div class="container hero-container">
-                <div class="hero-text">
-                    <h2>Agro forte,<br> <span>futuro sustentável</span></h2>
-                    <p>Tecnologia, inovação e respeito ao meio ambiente para alimentar o mundo sem destruir o amanhã.</p>
-                    <a href="#calculadora" class="btn-primary">🌱 Calcular economia de água</a>
-                </div>
-                <div class="hero-img">
-                    <!-- Imagem ilustrativa - substitua por uma imagem sua ou com crédito -->
-                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&auto=format" alt="Campo sustentável com plantação e tecnologia" loading="lazy">
-                    <p class="img-credits">Imagem: Unsplash / agricultura sustentável</p>
-                </div>
+    <section id="sustentabilidade" class="sustentabilidade">
+        <div class="container">
+            <div class="section-header">
+                <h2>Equilíbrio que alimenta o futuro</h2>
+                <p>Produção forte e meio ambiente saudável andam juntos.</p>
             </div>
-        </section>
-
-        <!-- SUSTENTABILIDADE -->
-        <section id="sustentabilidade" class="sustentabilidade">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Equilíbrio que alimenta o futuro</h2>
-                    <p>Produção forte e meio ambiente saudável andam juntos. Conheça os pilares dessa aliança.</p>
-                </div>
-                <div class="cards-grid">
-                    <article class="card">
-                        <div class="card-icon">💧</div>
-                        <h3>Uso racional da água</h3>
-                        <p>Irrigação por gotejamento e captação de chuva reduzem desperdício e aumentam produtividade.</p>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon">🌳</div>
-                        <h3>Preservação de nascentes</h3>
-                        <p>Matas ciliares e recuperação de APPs garantem água de qualidade para toda a cadeia.</p>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon">🌱</div>
-                        <h3>Solo vivo</h3>
-                        <p>Plantio direto, rotação de culturas e bioinsumos aumentam a fertilidade sem químicos agressivos.</p>
-                    </article>
-                    <article class="card">
-                        <div class="card-icon">⚡</div>
-                        <h3>Energia limpa no campo</h3>
-                        <p>Biogás, solar e eólica reduzem emissões e geram economia para o produtor.</p>
-                    </article>
-                </div>
+            <div class="cards-grid">
+                <article class="card"><div class="card-icon">💧</div><h3>Uso racional da água</h3><p>Irrigação por gotejamento e captação de chuva reduzem desperdício.</p></article>
+                <article class="card"><div class="card-icon">🌳</div><h3>Preservação de nascentes</h3><p>Matas ciliares garantem água de qualidade.</p></article>
+                <article class="card"><div class="card-icon">🌱</div><h3>Solo vivo</h3><p>Plantio direto, rotação de culturas e bioinsumos.</p></article>
+                <article class="card"><div class="card-icon">⚡</div><h3>Energia limpa no campo</h3><p>Biogás, solar e eólica reduzem emissões.</p></article>
             </div>
-        </section>
-
-        <!-- CALCULADORA INTERATIVA (JS) -->
-        <section id="calculadora" class="calculadora">
-            <div class="container">
-                <div class="section-header">
-                    <h2>💧 Calculadora de economia de água</h2>
-                    <p>Simule quanto você pode economizar adotando práticas sustentáveis de irrigação.</p>
-                </div>
-                <div class="calculator-card">
-                    <div class="calc-input-group">
-                        <label for="area">Área plantada (hectares):</label>
-                        <input type="number" id="area" placeholder="Ex: 10" step="0.1" min="0">
-                    </div>
-                    <div class="calc-input-group">
-                        <label for="tecnologia">Tecnologia sustentável:</label>
-                        <select id="tecnologia">
-                            <option value="gotejamento">Irrigação por gotejamento</option>
-                            <option value="sensor">Sensores de umidade + automatização</option>
-                            <option value="captacao">Captação e reuso de água da chuva</option>
-                        </select>
-                    </div>
-                    <button id="calcularBtn" class="btn-primary">Calcular economia</button>
-                    <div id="resultadoCalculo" class="resultado">
-                        <!-- resultado dinâmico via JS -->
-                    </div>
-                    <p class="calc-obs">*Estimativa baseada em dados da Embrapa e boas práticas do SENAR.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- BOAS PRÁTICAS -->
-        <section id="praticas" class="praticas">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Boas práticas que transformam o agro</h2>
-                    <p>Pequenas atitudes, grandes impactos positivos.</p>
-                </div>
-                <div class="praticas-grid">
-                    <div class="pratica-item" data-dica="reciclagem">
-                        <h3>♻️ Reciclagem de embalagens</h3>
-                        <p>Devolução de embalagens de defensivos e adubos evita contaminação do solo e água.</p>
-                    </div>
-                    <div class="pratica-item" data-dica="integracao">
-                        <h3>🌾 ILPF (Integração Lavoura-Pecuária-Floresta)</h3>
-                        <p>Recupera pastagens, sequestra carbono e diversifica renda.</p>
-                    </div>
-                    <div class="pratica-item" data-dica="bioinsumos">
-                        <h3>🍃 Bioinsumos e controle biológico</h3>
-                        <p>Substitui agrotóxicos por inimigos naturais e microrganismos benéficos.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FORMULÁRIO DE CONTATO (validação JS) -->
-        <section id="contato" class="contato">
-            <div class="container">
-                <div class="section-header">
-                    <h2>📬 Quer saber mais?</h2>
-                    <p>Envie uma mensagem e receba dicas de sustentabilidade no campo.</p>
-                </div>
-                <form id="formContato" class="form-contato">
-                    <div class="form-group">
-                        <label for="nome">Nome completo *</label>
-                        <input type="text" id="nome" name="nome" required>
-                        <span class="error-message" id="error-nome"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mail *</label>
-                        <input type="email" id="email" name="email" required>
-                        <span class="error-message" id="error-email"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="mensagem">Mensagem *</label>
-                        <textarea id="mensagem" rows="4" required></textarea>
-                        <span class="error-message" id="error-mensagem"></span>
-                    </div>
-                    <button type="submit" class="btn-primary">Enviar mensagem</button>
-                    <div id="formFeedback" class="form-feedback"></div>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container footer-container">
-            <p>© 2026 - Projeto para o Concurso Agrinho | SENAR-PR / SEED-PR</p>
-            <p>🌱 “Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente”</p>
-            <p class="footer-credits">Imagens: créditos indicados individualmente. Conteúdo autoral.</p>
         </div>
-    </footer>
+    </section>
 
-    <script src="js/script.js"></script>
+    <section id="calculadora" class="calculadora">
+        <div class="container">
+            <div class="section-header">
+                <h2>💧 Calculadora de economia de água</h2>
+                <p>Simule quanto você pode economizar com práticas sustentáveis.</p>
+            </div>
+            <div class="calculator-card">
+                <div class="calc-input-group"><label for="area">Área plantada (hectares):</label><input type="number" id="area" placeholder="Ex: 10" step="0.1" min="0"></div>
+                <div class="calc-input-group"><label for="tecnologia">Tecnologia sustentável:</label><select id="tecnologia"><option value="gotejamento">Irrigação por gotejamento</option><option value="sensor">Sensores de umidade + automatização</option><option value="captacao">Captação e reuso de água da chuva</option></select></div>
+                <button id="calcularBtn" class="btn-primary">Calcular economia</button>
+                <div id="resultadoCalculo" class="resultado"></div>
+                <p class="calc-obs">*Estimativa baseada em dados da Embrapa e SENAR.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="praticas" class="praticas">
+        <div class="container">
+            <div class="section-header"><h2>Boas práticas que transformam o agro</h2><p>Pequenas atitudes, grandes impactos.</p></div>
+            <div class="praticas-grid">
+                <div class="pratica-item"><h3>♻️ Reciclagem de embalagens</h3><p>Devolução de embalagens evita contaminação do solo e água.</p></div>
+                <div class="pratica-item"><h3>🌾 ILPF (Integração Lavoura-Pecuária-Floresta)</h3><p>Recupera pastagens, sequestra carbono e diversifica renda.</p></div>
+                <div class="pratica-item"><h3>🍃 Bioinsumos e controle biológico</h3><p>Substitui agrotóxicos por inimigos naturais.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contato">
+        <div class="container">
+            <div class="section-header"><h2>📬 Quer saber mais?</h2><p>Envie uma mensagem e receba dicas de sustentabilidade no campo.</p></div>
+            <form id="formContato" class="form-contato">
+                <div class="form-group"><label for="nome">Nome completo *</label><input type="text" id="nome" required><span class="error-message" id="error-nome"></span></div>
+                <div class="form-group"><label for="email">E-mail *</label><input type="email" id="email" required><span class="error-message" id="error-email"></span></div>
+                <div class="form-group"><label for="mensagem">Mensagem *</label><textarea id="mensagem" rows="4" required></textarea><span class="error-message" id="error-mensagem"></span></div>
+                <button type="submit" class="btn-primary">Enviar mensagem</button>
+                <div id="formFeedback" class="form-feedback"></div>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer-container">
+        <p>© 2026 - Projeto para o Concurso Agrinho | SENAR-PR / SEED-PR</p>
+        <p>🌱 “Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente”</p>
+        <p class="footer-credits">Imagens com créditos. Conteúdo autoral.</p>
+    </div>
+</footer>
+
+<script>
+    // MODO ESCURO
+    const toggleBtn = document.getElementById('darkModeToggle');
+    toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Modo claro' : '🌙 Modo escuro';
+    });
+
+    // MENU HAMBÚRGUER
+    const hamburger = document.querySelector('.menu-hamburger');
+    const navList = document.querySelector('.nav-list');
+    hamburger.addEventListener('click', () => navList.classList.toggle('active'));
+    document.querySelectorAll('.nav-list a').forEach(link => link.addEventListener('click', () => navList.classList.remove('active')));
+
+    // CALCULADORA
+    document.getElementById('calcularBtn').addEventListener('click', () => {
+        const area = parseFloat(document.getElementById('area').value);
+        const tecnologia = document.getElementById('tecnologia').value;
+        const resultadoDiv = document.getElementById('resultadoCalculo');
+        if (isNaN(area) || area <= 0) {
+            resultadoDiv.innerHTML = '<span style="color:#c7362b;">❌ Insira uma área válida (maior que zero).</span>';
+            return;
+        }
+        const economiaPorHa = { gotejamento: 3200, sensor: 4100, captacao: 2800 };
+        const economiaTotal = area * economiaPorHa[tecnologia];
+        resultadoDiv.innerHTML = `🌿 <strong>Resultado:</strong> Com ${area} hectare(s) utilizando ${document.getElementById('tecnologia').options[document.getElementById('tecnologia').selectedIndex].text},<br> você pode economizar <strong>${economiaTotal.toLocaleString()} litros</strong> por safra! ✅`;
+    });
+
+    // VALIDAÇÃO FORMULÁRIO
+    const form = document.getElementById('formContato');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let valid = true;
+        document.getElementById('error-nome').innerText = '';
+        document.getElementById('error-email').innerText = '';
+        document.getElementById('error-mensagem').innerText = '';
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const msg = document.getElementById('mensagem').value.trim();
+        if (nome === '') { document.getElementById('error-nome').innerText = 'Nome obrigatório.'; valid = false; }
+        if (!/^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email)) { document.getElementById('error-email').innerText = 'E-mail inválido.'; valid = false; }
+        if (msg === '') { document.getElementById('error-mensagem').innerText = 'Mensagem obrigatória.'; valid = false; }
+        const feedback = document.getElementById('formFeedback');
+        if (valid) { feedback.innerHTML = '✅ Mensagem enviada com sucesso!'; feedback.style.color = '#2b6e2f'; form.reset(); setTimeout(() => feedback.innerHTML = '', 3000); }
+        else { feedback.innerHTML = '⚠️ Corrija os campos destacados.'; feedback.style.color = '#c7362b'; }
+    });
+
+    // DESTAQUE DO LINK ATIVO NO SCROLL
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-list a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+        navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === `#${current}`) link.classList.add('active'); });
+    });
+</script>
 </body>
 </html>
