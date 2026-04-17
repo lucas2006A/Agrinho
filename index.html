@@ -11,6 +11,35 @@
 </head>
 <body>
 
+<!-- BOLINHA FLUTUANTE DA IA -->
+<div class="ia-bolinha" id="iaBolinha">
+    <span class="ia-icone">🤖</span>
+    <span class="ia-tooltip">Pergunte à AgroIA</span>
+</div>
+
+<!-- MODAL DA IA (pop-up) -->
+<div id="iaModal" class="ia-modal">
+    <div class="ia-modal-content">
+        <div class="ia-modal-header">
+            <h3>🤖 AgroIA - Assistente Virtual</h3>
+            <span class="ia-modal-fechar">&times;</span>
+        </div>
+        <div class="ia-modal-body">
+            <div class="chat-box" id="chatBoxModal">
+                <div class="chat-message bot">
+                    🌱 Olá! Sou a AgroIA. Pergunte-me sobre:<br>
+                    ✅ Economia de água<br>✅ Energia renovável<br>✅ Controle biológico<br>✅ Certificações<br>✅ Dicas para pequenos produtores
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="perguntaModal" placeholder="Digite sua pergunta..." autocomplete="off">
+                <button id="enviarModal">Enviar</button>
+            </div>
+            <p class="ia-obs">*IA educativa com respostas baseadas em conhecimento agro sustentável.</p>
+        </div>
+    </div>
+</div>
+
 <div class="dark-mode-btn-container">
     <button id="darkModeToggle" aria-label="Alternar modo escuro">🌙 Modo escuro</button>
 </div>
@@ -45,7 +74,6 @@
                 <a href="#calculadora" class="btn-primary">🌱 Calcular economia de água</a>
             </div>
             <div class="hero-img">
-                <!-- Substitua por imagem própria ou mantenha com crédito -->
                 <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&auto=format" alt="Campo sustentável" loading="lazy">
                 <p class="img-credits">Imagem: Unsplash / agricultura sustentável</p>
             </div>
@@ -112,7 +140,7 @@
     <div class="container footer-container">
         <p>© 2026 - Projeto para o Concurso Agrinho | SENAR-PR / SEED-PR</p>
         <p>🌱 “Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente”</p>
-        <p class="footer-credits">Imagens com créditos. Conteúdo autoral.</p>
+        <p class="footer-credits">Imagens com créditos. Conteúdo autoral. AgroIA - Assistente educativa.</p>
     </div>
 </footer>
 
@@ -170,6 +198,88 @@
         let current = '';
         sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
         navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === `#${current}`) link.classList.add('active'); });
+    });
+
+    // ==================== IA MODAL ====================
+    const modal = document.getElementById('iaModal');
+    const bolinha = document.getElementById('iaBolinha');
+    const fecharModal = document.querySelector('.ia-modal-fechar');
+
+    // Abrir modal ao clicar na bolinha
+    bolinha.addEventListener('click', () => {
+        modal.style.display = 'flex';
+    });
+
+    // Fechar modal
+    fecharModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Fechar ao clicar fora do conteúdo
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Lógica da IA (mesma do chat, agora no modal)
+    const chatBoxModal = document.getElementById('chatBoxModal');
+    const perguntaModal = document.getElementById('perguntaModal');
+    const enviarModal = document.getElementById('enviarModal');
+
+    const respostasIA = {
+        "agua": "💧 A economia de água pode ser feita com irrigação por gotejamento, captação de chuva e sensores de umidade. Isso reduz o desperdício em até 60%!",
+        "irrigação": "🌽 Sistemas de irrigação inteligente economizam água e aumentam a produtividade. O gotejamento é um dos mais eficientes.",
+        "energia": "⚡ Energia solar e biogás são ótimas opções para o campo. Reduzem custos e emissões de carbono.",
+        "solar": "☀️ Placas solares podem alimentar bombas d'água, cercas elétricas e sistemas de irrigação. Muitos programas oferecem financiamento.",
+        "solo": "🌱 Solo vivo é rico em matéria orgânica. Técnicas como plantio direto, rotação de culturas e adubação verde mantêm a fertilidade.",
+        "fertilidade": "🌿 Adubos verdes (como crotalária) fixam nitrogênio e melhoram a estrutura do solo, reduzindo a necessidade de químicos.",
+        "bioinsumo": "🍃 Bioinsumos são produtos feitos com microrganismos ou extratos vegetais que controlam pragas sem agredir o meio ambiente.",
+        "controle biológico": "🐞 Joaninhas, vespas e fungos específicos combatem pragas naturalmente. Exemplo: Bacillus thuringiensis contra lagartas.",
+        "ilpf": "🌳 Integração Lavoura-Pecuária-Floresta recupera pastagens, sequestra carbono e gera renda com madeira, grãos e carne.",
+        "reciclagem": "♻️ Devolva embalagens de defensivos agrícolas em pontos de coleta. Muitos sindicatos rurais têm programas de logística reversa.",
+        "certificação": "📜 Selos como 'Agricultura Sustentável', 'Orgânico Brasil' e 'Rainforest Alliance' atestam boas práticas ambientais e sociais.",
+        "orgânico": "🌻 Produção orgânica evita agrotóxicos sintéticos. O mercado está crescendo e valoriza quem preserva o meio ambiente.",
+        "dica": "💡 Plante árvores nativas em áreas de preservação permanente (APP). Isso protege nascentes e atrai polinizadores.",
+        "pequeno produtor": "👨‍🌾 Comece com compostagem, coleta de água da chuva e rotação de culturas. Pequenas ações geram grande impacto.",
+        "agro": "🚜 Agro forte e sustentável é aquele que usa tecnologia para produzir mais com menos impacto ambiental.",
+        "sustentável": "♻️ Sustentabilidade no campo significa atender às necessidades atuais sem comprometer as futuras gerações.",
+        "ajuda": "🌾 Posso ajudar com: água, energia, solo, bioinsumos, ILPF, certificações, dicas para pequenos produtores e muito mais!",
+        "olá": "🌱 Olá! Como posso ajudar você hoje no caminho do agro sustentável?",
+        "obrigado": "😊 Por nada! Estou aqui para ajudar na construção de um agro mais forte e verde.",
+        "padrão": "🤖 Ainda estou aprendendo sobre esse tema. Pergunte sobre: água, energia, solo, bioinsumos, ILPF, certificação ou peça uma dica."
+    };
+
+    function getRespostaIA(pergunta) {
+        const texto = pergunta.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        for (let [chave, resposta] of Object.entries(respostasIA)) {
+            if (texto.includes(chave)) {
+                return resposta;
+            }
+        }
+        return respostasIA["padrão"];
+    }
+
+    function adicionarMensagemModal(remetente, texto) {
+        const div = document.createElement('div');
+        div.classList.add('chat-message', remetente);
+        div.innerHTML = texto;
+        chatBoxModal.appendChild(div);
+        chatBoxModal.scrollTop = chatBoxModal.scrollHeight;
+    }
+
+    function processarPerguntaModal() {
+        const pergunta = perguntaModal.value.trim();
+        if (pergunta === "") return;
+        adicionarMensagemModal('user', `🧑‍🌾 ${pergunta}`);
+        const resposta = getRespostaIA(pergunta);
+        adicionarMensagemModal('bot', `🤖 ${resposta}`);
+        perguntaModal.value = '';
+    }
+
+    enviarModal.addEventListener('click', processarPerguntaModal);
+    perguntaModal.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') processarPerguntaModal();
     });
 </script>
 </body>
