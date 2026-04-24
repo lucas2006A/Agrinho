@@ -7,8 +7,9 @@
     <meta name="agrinho" content="concurso2026">
     <title>Agrinho 2026 | Agro Sustentável</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
 
@@ -35,30 +36,62 @@
 <main>
     <!-- HERO SECTION -->
     <section id="home" class="hero">
+        <div class="hero-bg-pattern"></div>
         <div class="container hero-container">
             <div class="hero-text">
+                <span class="hero-badge">🌱 Concurso Agrinho 2026</span>
                 <h2>Agro forte, <span>futuro sustentável</span></h2>
                 <p>Equilíbrio entre produção e meio ambiente</p>
                 <p class="hero-description">Transformando a agricultura através da inovação e sustentabilidade</p>
                 <a href="#sobre" class="btn-primary">Explorar Agora <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="hero-stats">
+            <div class="hero-stats" id="counterSection">
                 <div class="stat-card">
-                    <h3>2500</h3>
+                    <h3 id="count1">0</h3>
                     <p>Propriedades Sustentáveis</p>
+                    <i class="fas fa-tractor"></i>
                 </div>
                 <div class="stat-card">
-                    <h3>85<span>%</span></h3>
+                    <h3 id="count2">0<span>%</span></h3>
                     <p>Redução de Emissões</p>
+                    <i class="fas fa-cloud-sun"></i>
                 </div>
                 <div class="stat-card">
-                    <h3>150</h3>
+                    <h3 id="count3">0</h3>
                     <p>Mil Hectares Protegidos</p>
+                    <i class="fas fa-tree"></i>
                 </div>
                 <div class="stat-card">
-                    <h3>45</h3>
+                    <h3 id="count4">0</h3>
                     <p>Espécies Preservadas</p>
+                    <i class="fas fa-paw"></i>
                 </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1200,77,1248,64,1248,64L1248,120L0,120Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- CARROSSEL DE PRÁTICAS (novo detalhe) -->
+    <section class="carousel-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-images"></i> Sustentabilidade em Movimento</h2>
+                <p>Veja como a tecnologia e a natureza se unem no campo</p>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1592982537447-6f2a6a0c9b2c?w=600&auto=format" alt="Irrigação"><div class="swiper-caption">Irrigação inteligente</div></div>
+                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format" alt="Energia solar"><div class="swiper-caption">Energia solar</div></div>
+                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1589923188656-9d1f3f5b1d3a?w=600&auto=format" alt="Plantio direto"><div class="swiper-caption">Plantio direto</div></div>
+                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&auto=format" alt="Floresta"><div class="swiper-caption">Recuperação de nascentes</div></div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
     </section>
@@ -72,19 +105,22 @@
             </div>
             <div class="sobre-cards">
                 <div class="sobre-card">
-                    <i class="fas fa-leaf"></i>
+                    <div class="sobre-card-icon"><i class="fas fa-leaf"></i></div>
                     <h3>Produção Responsável</h3>
                     <p>Utilizando técnicas modernas que respeitam o meio ambiente e garantem produtividade máxima.</p>
+                    <div class="card-glow"></div>
                 </div>
                 <div class="sobre-card">
-                    <i class="fas fa-tint"></i>
+                    <div class="sobre-card-icon"><i class="fas fa-tint"></i></div>
                     <h3>Gestão de Água</h3>
                     <p>Sistemas inteligentes de irrigação que economizam água e preservam recursos hídricos.</p>
+                    <div class="card-glow"></div>
                 </div>
                 <div class="sobre-card">
-                    <i class="fas fa-tree"></i>
+                    <div class="sobre-card-icon"><i class="fas fa-tree"></i></div>
                     <h3>Conservação Florestal</h3>
                     <p>Mantendo a biodiversidade através de práticas que integram floresta e agricultura.</p>
+                    <div class="card-glow"></div>
                 </div>
             </div>
         </div>
@@ -98,36 +134,12 @@
                 <p>Soluções que transformam o campo</p>
             </div>
             <div class="praticas-grid">
-                <div class="pratica-item">
-                    <i class="fas fa-sync-alt"></i>
-                    <h3>Rotação de Culturas</h3>
-                    <p>Alternância de cultivos para melhorar a fertilidade do solo.</p>
-                </div>
-                <div class="pratica-item">
-                    <i class="fas fa-microchip"></i>
-                    <h3>Irrigação inteligente</h3>
-                    <p>Sistemas automatizados que economizam água.</p>
-                </div>
-                <div class="pratica-item">
-                    <i class="fas fa-bug"></i>
-                    <h3>Biodiversidade</h3>
-                    <p>Preservação de espécies polinizadoras e benéficas.</p>
-                </div>
-                <div class="pratica-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3>Compostagem</h3>
-                    <p>Transformação de resíduos em nutrientes.</p>
-                </div>
-                <div class="pratica-item">
-                    <i class="fas fa-solar-panel"></i>
-                    <h3>Energia Renovável</h3>
-                    <p>Painéis solares e energia eólica nas propriedades.</p>
-                </div>
-                <div class="pratica-item">
-                    <i class="fas fa-drone"></i>
-                    <h3>Tecnologia Agrícola</h3>
-                    <p>Uso de IA e drones para monitoramento.</p>
-                </div>
+                <div class="pratica-item"><i class="fas fa-sync-alt"></i><h3>Rotação de Culturas</h3><p>Alternância de cultivos para melhorar a fertilidade do solo.</p><div class="item-overlay"></div></div>
+                <div class="pratica-item"><i class="fas fa-microchip"></i><h3>Irrigação inteligente</h3><p>Sistemas automatizados que economizam água.</p><div class="item-overlay"></div></div>
+                <div class="pratica-item"><i class="fas fa-bug"></i><h3>Biodiversidade</h3><p>Preservação de espécies polinizadoras e benéficas.</p><div class="item-overlay"></div></div>
+                <div class="pratica-item"><i class="fas fa-recycle"></i><h3>Compostagem</h3><p>Transformação de resíduos em nutrientes.</p><div class="item-overlay"></div></div>
+                <div class="pratica-item"><i class="fas fa-solar-panel"></i><h3>Energia Renovável</h3><p>Painéis solares e energia eólica nas propriedades.</p><div class="item-overlay"></div></div>
+                <div class="pratica-item"><i class="fas fa-drone"></i><h3>Tecnologia Agrícola</h3><p>Uso de IA e drones para monitoramento.</p><div class="item-overlay"></div></div>
             </div>
         </div>
     </section>
@@ -140,89 +152,123 @@
                 <p>Resultados concretos da sustentabilidade no campo</p>
             </div>
             <div class="impacto-grid">
-                <div class="impacto-card">
-                    <i class="fas fa-cloud-sun"></i>
-                    <h3>Redução de Carbono</h3>
-                    <p>Práticas sustentáveis reduzem emissões de CO₂ em até 60%</p>
-                </div>
-                <div class="impacto-card">
-                    <i class="fas fa-water"></i>
-                    <h3>Conservação de Água</h3>
-                    <p>Economia de 40% no consumo de água através de irrigação inteligente</p>
-                </div>
-                <div class="impacto-card">
-                    <i class="fas fa-mountain"></i>
-                    <h3>Proteção Florestal</h3>
-                    <p>Preservação de 150 mil hectares de floresta nativa</p>
-                </div>
-                <div class="impacto-card">
-                    <i class="fas fa-paw"></i>
-                    <h3>Biodiversidade</h3>
-                    <p>Aumento de 45 espécies de animais em propriedades sustentáveis</p>
-                </div>
+                <div class="impacto-card"><i class="fas fa-cloud-sun"></i><h3>Redução de Carbono</h3><p>Práticas sustentáveis reduzem emissões de CO₂ em até 60%</p><div class="impacto-bar"></div></div>
+                <div class="impacto-card"><i class="fas fa-water"></i><h3>Conservação de Água</h3><p>Economia de 40% no consumo de água através de irrigação inteligente</p><div class="impacto-bar"></div></div>
+                <div class="impacto-card"><i class="fas fa-mountain"></i><h3>Proteção Florestal</h3><p>Preservação de 150 mil hectares de floresta nativa</p><div class="impacto-bar"></div></div>
+                <div class="impacto-card"><i class="fas fa-paw"></i><h3>Biodiversidade</h3><p>Aumento de 45 espécies de animais em propriedades sustentáveis</p><div class="impacto-bar"></div></div>
             </div>
         </div>
     </section>
 
-    <!-- CONTATO -->
+    <!-- CONTATO COM MAPA ILUSTRATIVO E REDES SOCIAIS -->
     <section id="contato" class="contato">
         <div class="container">
             <div class="section-header">
                 <h2>Entre em Contato</h2>
-                <p>Envie sua mensagem para saber mais sobre práticas sustentáveis</p>
+                <p>Envie sua mensagem ou siga nossas redes sociais</p>
             </div>
-            <form id="formContato" class="form-contato">
-                <div class="form-group">
-                    <label for="nome">Seu Nome</label>
-                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
-                    <span class="error-message" id="error-nome"></span>
+            <div class="contato-wrapper">
+                <form id="formContato" class="form-contato">
+                    <div class="form-group"><label for="nome"><i class="fas fa-user"></i> Seu Nome</label><input type="text" id="nome" placeholder="Digite seu nome" required><span class="error-message" id="error-nome"></span></div>
+                    <div class="form-group"><label for="email"><i class="fas fa-envelope"></i> Seu Email</label><input type="email" id="email" placeholder="Digite seu e-mail" required><span class="error-message" id="error-email"></span></div>
+                    <div class="form-group"><label for="mensagem"><i class="fas fa-comment"></i> Sua Mensagem</label><textarea id="mensagem" rows="4" placeholder="Digite sua mensagem" required></textarea><span class="error-message" id="error-mensagem"></span></div>
+                    <button type="submit" class="btn-primary">Enviar Mensagem <i class="fas fa-paper-plane"></i></button>
+                    <div id="formFeedback" class="form-feedback"></div>
+                </form>
+                <div class="social-links">
+                    <h3>Redes Sociais</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone-alt"></i> (41) 3333-4444</p>
+                        <p><i class="fas fa-envelope-open-text"></i> contato@agrinho2026.com</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Seu Email</label>
-                    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
-                    <span class="error-message" id="error-email"></span>
-                </div>
-                <div class="form-group">
-                    <label for="mensagem">Sua Mensagem</label>
-                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Digite sua mensagem" required></textarea>
-                    <span class="error-message" id="error-mensagem"></span>
-                </div>
-                <button type="submit" class="btn-primary">Enviar Mensagem <i class="fas fa-paper-plane"></i></button>
-                <div id="formFeedback" class="form-feedback"></div>
-            </form>
+            </div>
         </div>
     </section>
 </main>
 
 <footer class="footer">
     <div class="container footer-container">
-        <p>© 2026 Agrinho – Agro Forte, Futuro Sustentável</p>
-        <p class="footer-agrinho">agrinho</p>
+        <div class="footer-brand">
+            <h2>Agrinho <span>2026</span></h2>
+            <p>Agro forte, futuro sustentável</p>
+        </div>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#praticas">Práticas</a>
+            <a href="#impacto">Impacto</a>
+            <a href="#contato">Contato</a>
+        </div>
+        <div class="footer-copy">
+            <p>© 2026 Agrinho – Agro Forte, Futuro Sustentável</p>
+            <p class="footer-agrinho">agrinho</p>
+        </div>
     </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
+    // Swiper Carrossel
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: { el: ".swiper-pagination", clickable: true },
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        autoplay: { delay: 4000, disableOnInteraction: false },
+        breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+    });
+
+    // Animações de contagem
+    function animateNumber(element, start, end, duration, hasPercent = false) {
+        let startTime = null;
+        const step = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const value = Math.floor(progress * (end - start) + start);
+            element.innerText = value + (hasPercent ? "%" : "");
+            if (progress < 1) requestAnimationFrame(step);
+            else element.innerText = end + (hasPercent ? "%" : "");
+        };
+        requestAnimationFrame(step);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateNumber(document.getElementById('count1'), 0, 2500, 2000);
+                animateNumber(document.getElementById('count2'), 0, 85, 1500, true);
+                animateNumber(document.getElementById('count3'), 0, 150, 2000);
+                animateNumber(document.getElementById('count4'), 0, 45, 1500);
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+    observer.observe(document.getElementById('counterSection'));
+
     // Menu hambúrguer
     const hamburger = document.querySelector('.menu-hamburger');
     const navList = document.querySelector('.nav-list');
     hamburger.addEventListener('click', () => navList.classList.toggle('active'));
     document.querySelectorAll('.nav-list a').forEach(link => link.addEventListener('click', () => navList.classList.remove('active')));
 
-    // Link ativo no scroll
+    // Scroll ativo
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-list a');
     window.addEventListener('scroll', () => {
         let current = '';
-        sections.forEach(section => {
-            if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id');
-        });
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
-        });
+        sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+        navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === `#${current}`) link.classList.add('active'); });
     });
 
-    // Validação do formulário
+    // Formulário
     const form = document.getElementById('formContato');
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -230,24 +276,12 @@
         document.getElementById('error-nome').innerText = '';
         document.getElementById('error-email').innerText = '';
         document.getElementById('error-mensagem').innerText = '';
-        
         const nome = document.getElementById('nome').value.trim();
         const email = document.getElementById('email').value.trim();
         const msg = document.getElementById('mensagem').value.trim();
-        
-        if (nome === '') {
-            document.getElementById('error-nome').innerText = 'Preencha este campo.';
-            valid = false;
-        }
-        if (!/^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email)) {
-            document.getElementById('error-email').innerText = 'Digite um e-mail válido.';
-            valid = false;
-        }
-        if (msg === '') {
-            document.getElementById('error-mensagem').innerText = 'Digite sua mensagem.';
-            valid = false;
-        }
-        
+        if (!nome) { document.getElementById('error-nome').innerText = 'Preencha este campo.'; valid = false; }
+        if (!/^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email)) { document.getElementById('error-email').innerText = 'E-mail inválido.'; valid = false; }
+        if (!msg) { document.getElementById('error-mensagem').innerText = 'Digite sua mensagem.'; valid = false; }
         const feedback = document.getElementById('formFeedback');
         if (valid) {
             feedback.innerHTML = '<i class="fas fa-check-circle"></i> Mensagem enviada com sucesso!';
