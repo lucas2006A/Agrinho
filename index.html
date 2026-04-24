@@ -9,14 +9,13 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
 
 <!-- BOLINHA FLUTUANTE DO GEMINI -->
-<a href="https://gemini.google.com/app?hl=pt-BR" target="_blank" class="gemini-fab" id="geminiFab">
+<a href="https://gemini.google.com/app?hl=pt-BR" target="_blank" class="gemini-fab">
     <div class="gemini-icon">
         <i class="fas fa-robot"></i>
     </div>
@@ -41,6 +40,9 @@
             <div class="menu-hamburger">
                 <span></span><span></span><span></span>
             </div>
+            <button id="darkModeToggle" class="dark-mode-btn" aria-label="Alternar modo claro/escuro">
+                <i class="fas fa-moon"></i>
+            </button>
         </nav>
     </div>
 </header>
@@ -87,28 +89,39 @@
         </div>
     </section>
 
-    <!-- CARROSSEL DE PRÁTICAS -->
+    <!-- CARROSSEL DE PRÁTICAS (sem imagens) -->
     <section class="carousel-section">
         <div class="container">
             <div class="section-header">
-                <h2><i class="fas fa-images"></i> Sustentabilidade em Movimento</h2>
-                <p>Veja como a tecnologia e a natureza se unem no campo</p>
+                <h2><i class="fas fa-leaf"></i> Sustentabilidade em Movimento</h2>
+                <p>Práticas que transformam o campo</p>
             </div>
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1592982537447-6f2a6a0c9b2c?w=600&auto=format" alt="Irrigação"><div class="swiper-caption">Irrigação inteligente</div></div>
-                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format" alt="Energia solar"><div class="swiper-caption">Energia solar</div></div>
-                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1589923188656-9d1f3f5b1d3a?w=600&auto=format" alt="Plantio direto"><div class="swiper-caption">Plantio direto</div></div>
-                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&auto=format" alt="Floresta"><div class="swiper-caption">Recuperação de nascentes</div></div>
+            <div class="praticas-highlight">
+                <div class="highlight-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Irrigação Inteligente</h3>
+                    <p>Economia de até 60% de água com tecnologias automatizadas</p>
                 </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div class="highlight-card">
+                    <i class="fas fa-solar-panel"></i>
+                    <h3>Energia Renovável</h3>
+                    <p>Energia solar e biogás reduzindo custos e emissões</p>
+                </div>
+                <div class="highlight-card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Plantio Sustentável</h3>
+                    <p>Técnicas que preservam o solo e aumentam produtividade</p>
+                </div>
+                <div class="highlight-card">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Reciclagem Agrícola</h3>
+                    <p>Aproveitamento de resíduos como nutrientes para o solo</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SOBRE / INFORMAÇÕES -->
+    <!-- SOBRE -->
     <section id="sobre" class="sobre">
         <div class="container">
             <div class="section-header">
@@ -156,18 +169,18 @@
         </div>
     </section>
 
-    <!-- FERRAMENTAS: MAPA + CALCULADORA -->
+    <!-- FERRAMENTAS (MAPA + CALCULADORA DE ÁGUA + CALCULADORA DE INSUMOS) -->
     <section id="ferramentas" class="ferramentas">
         <div class="container">
             <div class="section-header">
                 <h2><i class="fas fa-tools"></i> Ferramentas para o Produtor</h2>
-                <p>Meça sua área e calcule a economia de água com práticas sustentáveis</p>
+                <p>Meça sua área, calcule economia de água e insumos necessários</p>
             </div>
             <div class="ferramentas-grid">
                 <!-- Mapa interativo -->
                 <div class="mapa-card">
                     <h3><i class="fas fa-map-marked-alt"></i> Mapeamento de Área</h3>
-                    <p>Clique no mapa para marcar os vértices da sua propriedade. Ao finalizar, clique em "Calcular Área".</p>
+                    <p>Clique no mapa para marcar os vértices da sua propriedade.</p>
                     <div id="mapa" style="height: 350px; border-radius: 24px; margin-bottom: 16px;"></div>
                     <div class="mapa-buttons">
                         <button id="calcularAreaBtn" class="btn-secondary"><i class="fas fa-draw-polygon"></i> Calcular Área</button>
@@ -176,16 +189,16 @@
                     <div id="areaResultado" class="resultado-area">
                         <p><i class="fas fa-ruler-combined"></i> Área: <strong id="areaValor">0</strong> m² (<strong id="areaHectares">0</strong> hectares)</p>
                     </div>
-                    <p class="calc-obs">*Clique nos pontos do mapa para criar um polígono. O último ponto fecha automático.</p>
+                    <p class="calc-obs">*Clique nos pontos do mapa para criar um polígono. O último ponto é o primeiro.</p>
                 </div>
 
                 <!-- Calculadora de economia de água -->
                 <div class="calculadora-card">
-                    <h3><i class="fas fa-water"></i> Calculadora de economia de água</h3>
+                    <h3><i class="fas fa-water"></i> Economia de Água</h3>
                     <p>Simule quanto você pode economizar adotando práticas sustentáveis.</p>
                     <div class="calc-input-group">
                         <label for="areaCalculadora"><i class="fas fa-map-marker-alt"></i> Área (hectares)</label>
-                        <input type="number" id="areaCalculadora" step="0.01" placeholder="Ex: 10 ou use a área medida no mapa">
+                        <input type="number" id="areaCalculadora" step="0.01" placeholder="Ex: 10">
                         <button id="usarAreaMapaBtn" class="btn-mini"><i class="fas fa-sync-alt"></i> Usar área do mapa</button>
                     </div>
                     <div class="calc-input-group">
@@ -200,11 +213,33 @@
                     <div id="resultadoEconomia" class="resultado-economia"></div>
                     <p class="calc-obs">*Estimativa baseada em dados da Embrapa e SENAR.</p>
                 </div>
+
+                <!-- Nova calculadora de insumos (adubo, sementes, veneno) -->
+                <div class="insumos-card">
+                    <h3><i class="fas fa-calculator"></i> Calculadora de Insumos</h3>
+                    <p>Calcule a quantidade necessária de adubo, sementes ou defensivos para sua área.</p>
+                    <div class="calc-input-group">
+                        <label for="areaInsumos"><i class="fas fa-map-marker-alt"></i> Área (hectares)</label>
+                        <input type="number" id="areaInsumos" step="0.01" placeholder="Ex: 10">
+                        <button id="usarAreaMapaInsumos" class="btn-mini"><i class="fas fa-sync-alt"></i> Usar área do mapa</button>
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="tipoInsumo"><i class="fas fa-boxes"></i> Tipo de insumo</label>
+                        <select id="tipoInsumo">
+                            <option value="adubo">🌾 Adubo (kg/ha)</option>
+                            <option value="sementes">🌽 Sementes (kg/ha)</option>
+                            <option value="veneno">🧪 Defensivo (L/ha)</option>
+                        </select>
+                    </div>
+                    <button id="calcularInsumoBtn" class="btn-primary"><i class="fas fa-chart-line"></i> Calcular necessidade</button>
+                    <div id="resultadoInsumo" class="resultado-insumo"></div>
+                    <p class="calc-obs">*Valores médios de referência: adubo: 200 kg/ha, sementes: 50 kg/ha, defensivo: 3 L/ha.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- IMPACTO (INFORMAÇÕES) -->
+    <!-- IMPACTO -->
     <section id="impacto" class="impacto">
         <div class="container">
             <div class="section-header">
@@ -274,17 +309,19 @@
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    // Swiper Carrossel
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        pagination: { el: ".swiper-pagination", clickable: true },
-        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-        autoplay: { delay: 4000, disableOnInteraction: false },
-        breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+    // Modo claro/escuro
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const icon = darkModeToggle.querySelector('i');
+        if (document.body.classList.contains('dark-mode')) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
     });
 
     // Contadores animados
@@ -354,7 +391,7 @@
         }
     });
 
-    // ==================== MAPA INTERATIVO ====================
+    // Mapa interativo
     var map = L.map('mapa').setView([-23.5505, -46.6333], 12);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
@@ -375,8 +412,7 @@
         }
         area = Math.abs(area) / 2;
         const metersPerDegree = 111319.9;
-        const areaMeters = area * (metersPerDegree * metersPerDegree);
-        return areaMeters;
+        return area * (metersPerDegree * metersPerDegree);
     }
 
     function updateAreaDisplay() {
@@ -391,15 +427,6 @@
         }
     }
 
-    function addMapClickListener() {
-        map.on('click', function(e) {
-            polygonPoints.push(e.latlng);
-            if (drawnPolygon) map.removeLayer(drawnPolygon);
-            drawnPolygon = L.polygon(polygonPoints, { color: '#2b6e2f', weight: 3, fillOpacity: 0.3 }).addTo(map);
-            updateAreaDisplay();
-        });
-    }
-
     function clearPolygon() {
         polygonPoints = [];
         if (drawnPolygon) map.removeLayer(drawnPolygon);
@@ -407,33 +434,62 @@
         updateAreaDisplay();
     }
 
+    map.on('click', function(e) {
+        polygonPoints.push(e.latlng);
+        if (drawnPolygon) map.removeLayer(drawnPolygon);
+        drawnPolygon = L.polygon(polygonPoints, { color: '#2b6e2f', weight: 3, fillOpacity: 0.3 }).addTo(map);
+        updateAreaDisplay();
+    });
+
     document.getElementById('calcularAreaBtn').addEventListener('click', () => {
-        if (polygonPoints.length < 3) alert('Desenhe pelo menos 3 pontos no mapa para formar um polígono.');
+        if (polygonPoints.length < 3) alert('Desenhe pelo menos 3 pontos no mapa.');
         else updateAreaDisplay();
     });
     document.getElementById('limparMapaBtn').addEventListener('click', clearPolygon);
-    addMapClickListener();
 
-    document.getElementById('usarAreaMapaBtn').addEventListener('click', () => {
-        const hectares = parseFloat(document.getElementById('areaHectares').innerText);
-        if (hectares > 0) document.getElementById('areaCalculadora').value = hectares;
-        else alert('Desenhe uma área no mapa primeiro (pelo menos 3 pontos).');
-    });
+    function usarAreaNoCampo(campoId) {
+        const ha = parseFloat(document.getElementById('areaHectares').innerText);
+        if (ha > 0) document.getElementById(campoId).value = ha;
+        else alert('Desenhe uma área no mapa primeiro.');
+    }
+    document.getElementById('usarAreaMapaBtn').addEventListener('click', () => usarAreaNoCampo('areaCalculadora'));
+    document.getElementById('usarAreaMapaInsumos').addEventListener('click', () => usarAreaNoCampo('areaInsumos'));
 
-    // Calculadora de economia
+    // Calculadora de água
     const economiaPorHa = { gotejamento: 3200, sensor: 4100, captacao: 2800 };
     document.getElementById('calcularEconomiaBtn').addEventListener('click', () => {
         const area = parseFloat(document.getElementById('areaCalculadora').value);
         const tecnologia = document.getElementById('tecnologia').value;
         const resDiv = document.getElementById('resultadoEconomia');
         if (isNaN(area) || area <= 0) {
-            resDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Insira uma área válida (maior que zero).';
+            resDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Área inválida.';
             resDiv.style.color = '#c7362b';
             return;
         }
-        const economiaTotal = area * economiaPorHa[tecnologia];
-        const economiaM3 = (economiaTotal / 1000).toFixed(1);
-        resDiv.innerHTML = `<i class="fas fa-tint"></i> Com ${area} hectare(s) usando ${document.getElementById('tecnologia').options[document.getElementById('tecnologia').selectedIndex].text},<br> você economiza <strong>${economiaTotal.toLocaleString()} litros</strong> (${economiaM3} m³) por safra! ✅`;
+        const economia = area * economiaPorHa[tecnologia];
+        resDiv.innerHTML = `<i class="fas fa-tint"></i> Economia: <strong>${economia.toLocaleString()} litros</strong> (${(economia/1000).toFixed(1)} m³) por safra. ✅`;
+        resDiv.style.color = '#2b6e2f';
+    });
+
+    // Calculadora de insumos (adubo, sementes, veneno)
+    const taxas = { adubo: 200, sementes: 50, veneno: 3 };
+    const unidades = { adubo: 'kg', sementes: 'kg', veneno: 'litros' };
+    document.getElementById('calcularInsumoBtn').addEventListener('click', () => {
+        const area = parseFloat(document.getElementById('areaInsumos').value);
+        const tipo = document.getElementById('tipoInsumo').value;
+        const resDiv = document.getElementById('resultadoInsumo');
+        if (isNaN(area) || area <= 0) {
+            resDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Insira uma área válida.';
+            resDiv.style.color = '#c7362b';
+            return;
+        }
+        const quantidade = area * taxas[tipo];
+        const unidade = unidades[tipo];
+        let nome = '';
+        if (tipo === 'adubo') nome = 'Adubo';
+        else if (tipo === 'sementes') nome = 'Sementes';
+        else nome = 'Defensivo';
+        resDiv.innerHTML = `<i class="fas fa-seedling"></i> Para ${area} hectares, você precisará de <strong>${quantidade.toFixed(1)} ${unidade}</strong> de ${nome}. ✅`;
         resDiv.style.color = '#2b6e2f';
     });
 </script>
