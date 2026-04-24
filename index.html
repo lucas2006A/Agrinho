@@ -12,11 +12,11 @@
 </head>
 <body>
 
-<!-- BOLINHA FLUTUANTE DO DEEPSEEK -->
-<div class="ia-bolinha" id="deepseekBtn">
+<!-- BOLINHA FLUTUANTE DO GEMINI -->
+<div class="ia-bolinha" id="geminiBtn">
     <i class="fas fa-robot"></i>
     <div class="ripple"></div>
-    <span class="ia-tooltip">Converse com DeepSeek</span>
+    <span class="ia-tooltip">Converse com Gemini</span>
 </div>
 
 <!-- MODAL DE LOGIN -->
@@ -219,10 +219,10 @@
         contentType: 'html'
     });
 
-    // DeepSeek - abre em nova aba
-    const deepseekBtn = document.getElementById('deepseekBtn');
-    deepseekBtn.addEventListener('click', () => {
-        window.open('https://gemini.google.com/app?hl=pt-BR);
+    // Gemini - abre em nova aba
+    const geminiBtn = document.getElementById('geminiBtn');
+    geminiBtn.addEventListener('click', () => {
+        window.open('https://gemini.google.com/app?hl=pt-BR', '_blank');
     });
 
     // Contador de visitas
