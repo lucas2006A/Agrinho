@@ -7,16 +7,11 @@
     <meta name="agrinho" content="concurso2026">
     <title>Agrinho 2026 | Agro Sustentável</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- Leaflet (mapa) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
 </head>
 <body>
 
@@ -360,7 +355,6 @@
     });
 
     // ==================== MAPA INTERATIVO ====================
-    // Inicializar mapa centrado no Brasil (Paraná)
     var map = L.map('mapa').setView([-23.5505, -46.6333], 12);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
@@ -371,7 +365,6 @@
     let polygonPoints = [];
     let drawnPolygon = null;
 
-    // Função para calcular área de um polígono (coordenadas em lat/lng) em metros quadrados
     function calculateArea(latLngs) {
         let area = 0;
         const points = latLngs.map(p => [p.lat, p.lng]);
@@ -381,7 +374,6 @@
             area -= points[j][0] * points[i][1];
         }
         area = Math.abs(area) / 2;
-        // Converter graus decimais para metros (aproximação: 1 grau ≈ 111319.9 m)
         const metersPerDegree = 111319.9;
         const areaMeters = area * (metersPerDegree * metersPerDegree);
         return areaMeters;
@@ -393,7 +385,6 @@
             const areaHa = areaM2 / 10000;
             document.getElementById('areaValor').innerText = areaM2.toFixed(0);
             document.getElementById('areaHectares').innerText = areaHa.toFixed(2);
-            // Opcional: preencher automaticamente a calculadora? Deixamos manual com botão.
         } else {
             document.getElementById('areaValor').innerText = '0';
             document.getElementById('areaHectares').innerText = '0';
@@ -403,12 +394,9 @@
     function addMapClickListener() {
         map.on('click', function(e) {
             polygonPoints.push(e.latlng);
-            if (drawnPolygon) {
-                map.removeLayer(drawnPolygon);
-            }
+            if (drawnPolygon) map.removeLayer(drawnPolygon);
             drawnPolygon = L.polygon(polygonPoints, { color: '#2b6e2f', weight: 3, fillOpacity: 0.3 }).addTo(map);
             updateAreaDisplay();
-            // Se tiver 3 pontos ou mais, podemos fechar automaticamente? Deixamos o usuário decidir quando calcular.
         });
     }
 
@@ -420,50 +408,34 @@
     }
 
     document.getElementById('calcularAreaBtn').addEventListener('click', () => {
-        if (polygonPoints.length < 3) {
-            alert('Desenhe pelo menos 3 pontos no mapa para formar um polígono.');
-        } else {
-            updateAreaDisplay();
-        }
+        if (polygonPoints.length < 3) alert('Desenhe pelo menos 3 pontos no mapa para formar um polígono.');
+        else updateAreaDisplay();
     });
-
     document.getElementById('limparMapaBtn').addEventListener('click', clearPolygon);
-
     addMapClickListener();
 
-    // Botão "Usar área do mapa" na calculadora
     document.getElementById('usarAreaMapaBtn').addEventListener('click', () => {
         const hectares = parseFloat(document.getElementById('areaHectares').innerText);
-        if (hectares > 0) {
-            document.getElementById('areaCalculadora').value = hectares;
-        } else {
-            alert('Desenhe uma área no mapa primeiro (pelo menos 3 pontos).');
-        }
+        if (hectares > 0) document.getElementById('areaCalculadora').value = hectares;
+        else alert('Desenhe uma área no mapa primeiro (pelo menos 3 pontos).');
     });
 
-    // ==================== CALCULADORA DE ECONOMIA DE ÁGUA ====================
-    const economiaPorHa = {
-        gotejamento: 3200,   // litros por hectare
-        sensor: 4100,
-        captacao: 2800
-    };
-
-    function calcularEconomia() {
+    // Calculadora de economia
+    const economiaPorHa = { gotejamento: 3200, sensor: 4100, captacao: 2800 };
+    document.getElementById('calcularEconomiaBtn').addEventListener('click', () => {
         const area = parseFloat(document.getElementById('areaCalculadora').value);
         const tecnologia = document.getElementById('tecnologia').value;
-        const resultadoDiv = document.getElementById('resultadoEconomia');
+        const resDiv = document.getElementById('resultadoEconomia');
         if (isNaN(area) || area <= 0) {
-            resultadoDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Insira uma área válida (maior que zero).';
-            resultadoDiv.style.color = '#c7362b';
+            resDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Insira uma área válida (maior que zero).';
+            resDiv.style.color = '#c7362b';
             return;
         }
         const economiaTotal = area * economiaPorHa[tecnologia];
         const economiaM3 = (economiaTotal / 1000).toFixed(1);
-        resultadoDiv.innerHTML = `<i class="fas fa-tint"></i> Com ${area} hectare(s) usando ${document.getElementById('tecnologia').options[document.getElementById('tecnologia').selectedIndex].text},<br> você economiza <strong>${economiaTotal.toLocaleString()} litros</strong> (${economiaM3} m³) por safra! ✅`;
-        resultadoDiv.style.color = '#2b6e2f';
-    }
-
-    document.getElementById('calcularEconomiaBtn').addEventListener('click', calcularEconomia);
+        resDiv.innerHTML = `<i class="fas fa-tint"></i> Com ${area} hectare(s) usando ${document.getElementById('tecnologia').options[document.getElementById('tecnologia').selectedIndex].text},<br> você economiza <strong>${economiaTotal.toLocaleString()} litros</strong> (${economiaM3} m³) por safra! ✅`;
+        resDiv.style.color = '#2b6e2f';
+    });
 </script>
 </body>
 </html>
