@@ -7,9 +7,16 @@
     <meta name="agrinho" content="concurso2026">
     <title>Agrinho 2026 | Agro Sustentável</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Leaflet (mapa) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
 </head>
 <body>
 
@@ -33,6 +40,7 @@
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#praticas">Práticas</a></li>
                 <li><a href="#impacto">Impacto</a></li>
+                <li><a href="#ferramentas">Ferramentas</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
             <div class="menu-hamburger">
@@ -52,7 +60,7 @@
                 <h2>Agro forte, <span>futuro sustentável</span></h2>
                 <p>Equilíbrio entre produção e meio ambiente</p>
                 <p class="hero-description">Transformando a agricultura através da inovação e sustentabilidade</p>
-                <a href="#sobre" class="btn-primary">Explorar Agora <i class="fas fa-arrow-right"></i></a>
+                <a href="#ferramentas" class="btn-primary">Explorar Ferramentas <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="hero-stats" id="counterSection">
                 <div class="stat-card">
@@ -153,7 +161,55 @@
         </div>
     </section>
 
-    <!-- INFORMAÇÕES / IMPACTO -->
+    <!-- FERRAMENTAS: MAPA + CALCULADORA -->
+    <section id="ferramentas" class="ferramentas">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-tools"></i> Ferramentas para o Produtor</h2>
+                <p>Meça sua área e calcule a economia de água com práticas sustentáveis</p>
+            </div>
+            <div class="ferramentas-grid">
+                <!-- Mapa interativo -->
+                <div class="mapa-card">
+                    <h3><i class="fas fa-map-marked-alt"></i> Mapeamento de Área</h3>
+                    <p>Clique no mapa para marcar os vértices da sua propriedade. Ao finalizar, clique em "Calcular Área".</p>
+                    <div id="mapa" style="height: 350px; border-radius: 24px; margin-bottom: 16px;"></div>
+                    <div class="mapa-buttons">
+                        <button id="calcularAreaBtn" class="btn-secondary"><i class="fas fa-draw-polygon"></i> Calcular Área</button>
+                        <button id="limparMapaBtn" class="btn-secondary"><i class="fas fa-trash-alt"></i> Limpar Polígono</button>
+                    </div>
+                    <div id="areaResultado" class="resultado-area">
+                        <p><i class="fas fa-ruler-combined"></i> Área: <strong id="areaValor">0</strong> m² (<strong id="areaHectares">0</strong> hectares)</p>
+                    </div>
+                    <p class="calc-obs">*Clique nos pontos do mapa para criar um polígono. O último ponto fecha automático.</p>
+                </div>
+
+                <!-- Calculadora de economia de água -->
+                <div class="calculadora-card">
+                    <h3><i class="fas fa-water"></i> Calculadora de economia de água</h3>
+                    <p>Simule quanto você pode economizar adotando práticas sustentáveis.</p>
+                    <div class="calc-input-group">
+                        <label for="areaCalculadora"><i class="fas fa-map-marker-alt"></i> Área (hectares)</label>
+                        <input type="number" id="areaCalculadora" step="0.01" placeholder="Ex: 10 ou use a área medida no mapa">
+                        <button id="usarAreaMapaBtn" class="btn-mini"><i class="fas fa-sync-alt"></i> Usar área do mapa</button>
+                    </div>
+                    <div class="calc-input-group">
+                        <label for="tecnologia"><i class="fas fa-microchip"></i> Tecnologia sustentável</label>
+                        <select id="tecnologia">
+                            <option value="gotejamento">Irrigação por gotejamento</option>
+                            <option value="sensor">Sensores de umidade + automatização</option>
+                            <option value="captacao">Captação e reuso de água da chuva</option>
+                        </select>
+                    </div>
+                    <button id="calcularEconomiaBtn" class="btn-primary"><i class="fas fa-chart-line"></i> Calcular economia</button>
+                    <div id="resultadoEconomia" class="resultado-economia"></div>
+                    <p class="calc-obs">*Estimativa baseada em dados da Embrapa e SENAR.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPACTO (INFORMAÇÕES) -->
     <section id="impacto" class="impacto">
         <div class="container">
             <div class="section-header">
@@ -169,7 +225,7 @@
         </div>
     </section>
 
-    <!-- CONTATO COM MAPA ILUSTRATIVO E REDES SOCIAIS -->
+    <!-- CONTATO -->
     <section id="contato" class="contato">
         <div class="container">
             <div class="section-header">
@@ -213,6 +269,7 @@
             <a href="#sobre">Sobre</a>
             <a href="#praticas">Práticas</a>
             <a href="#impacto">Impacto</a>
+            <a href="#ferramentas">Ferramentas</a>
             <a href="#contato">Contato</a>
         </div>
         <div class="footer-copy">
@@ -235,7 +292,7 @@
         breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
     });
 
-    // Animações de contagem
+    // Contadores animados
     function animateNumber(element, start, end, duration, hasPercent = false) {
         let startTime = null;
         const step = (timestamp) => {
@@ -248,7 +305,6 @@
         };
         requestAnimationFrame(step);
     }
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -277,7 +333,7 @@
         navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === `#${current}`) link.classList.add('active'); });
     });
 
-    // Formulário
+    // Formulário de contato
     const form = document.getElementById('formContato');
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -302,6 +358,112 @@
             feedback.style.color = '#c7362b';
         }
     });
+
+    // ==================== MAPA INTERATIVO ====================
+    // Inicializar mapa centrado no Brasil (Paraná)
+    var map = L.map('mapa').setView([-23.5505, -46.6333], 12);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
+        subdomains: 'abcd',
+        maxZoom: 19
+    }).addTo(map);
+
+    let polygonPoints = [];
+    let drawnPolygon = null;
+
+    // Função para calcular área de um polígono (coordenadas em lat/lng) em metros quadrados
+    function calculateArea(latLngs) {
+        let area = 0;
+        const points = latLngs.map(p => [p.lat, p.lng]);
+        for (let i = 0; i < points.length; i++) {
+            let j = (i + 1) % points.length;
+            area += points[i][0] * points[j][1];
+            area -= points[j][0] * points[i][1];
+        }
+        area = Math.abs(area) / 2;
+        // Converter graus decimais para metros (aproximação: 1 grau ≈ 111319.9 m)
+        const metersPerDegree = 111319.9;
+        const areaMeters = area * (metersPerDegree * metersPerDegree);
+        return areaMeters;
+    }
+
+    function updateAreaDisplay() {
+        if (polygonPoints.length >= 3) {
+            const areaM2 = calculateArea(polygonPoints);
+            const areaHa = areaM2 / 10000;
+            document.getElementById('areaValor').innerText = areaM2.toFixed(0);
+            document.getElementById('areaHectares').innerText = areaHa.toFixed(2);
+            // Opcional: preencher automaticamente a calculadora? Deixamos manual com botão.
+        } else {
+            document.getElementById('areaValor').innerText = '0';
+            document.getElementById('areaHectares').innerText = '0';
+        }
+    }
+
+    function addMapClickListener() {
+        map.on('click', function(e) {
+            polygonPoints.push(e.latlng);
+            if (drawnPolygon) {
+                map.removeLayer(drawnPolygon);
+            }
+            drawnPolygon = L.polygon(polygonPoints, { color: '#2b6e2f', weight: 3, fillOpacity: 0.3 }).addTo(map);
+            updateAreaDisplay();
+            // Se tiver 3 pontos ou mais, podemos fechar automaticamente? Deixamos o usuário decidir quando calcular.
+        });
+    }
+
+    function clearPolygon() {
+        polygonPoints = [];
+        if (drawnPolygon) map.removeLayer(drawnPolygon);
+        drawnPolygon = null;
+        updateAreaDisplay();
+    }
+
+    document.getElementById('calcularAreaBtn').addEventListener('click', () => {
+        if (polygonPoints.length < 3) {
+            alert('Desenhe pelo menos 3 pontos no mapa para formar um polígono.');
+        } else {
+            updateAreaDisplay();
+        }
+    });
+
+    document.getElementById('limparMapaBtn').addEventListener('click', clearPolygon);
+
+    addMapClickListener();
+
+    // Botão "Usar área do mapa" na calculadora
+    document.getElementById('usarAreaMapaBtn').addEventListener('click', () => {
+        const hectares = parseFloat(document.getElementById('areaHectares').innerText);
+        if (hectares > 0) {
+            document.getElementById('areaCalculadora').value = hectares;
+        } else {
+            alert('Desenhe uma área no mapa primeiro (pelo menos 3 pontos).');
+        }
+    });
+
+    // ==================== CALCULADORA DE ECONOMIA DE ÁGUA ====================
+    const economiaPorHa = {
+        gotejamento: 3200,   // litros por hectare
+        sensor: 4100,
+        captacao: 2800
+    };
+
+    function calcularEconomia() {
+        const area = parseFloat(document.getElementById('areaCalculadora').value);
+        const tecnologia = document.getElementById('tecnologia').value;
+        const resultadoDiv = document.getElementById('resultadoEconomia');
+        if (isNaN(area) || area <= 0) {
+            resultadoDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Insira uma área válida (maior que zero).';
+            resultadoDiv.style.color = '#c7362b';
+            return;
+        }
+        const economiaTotal = area * economiaPorHa[tecnologia];
+        const economiaM3 = (economiaTotal / 1000).toFixed(1);
+        resultadoDiv.innerHTML = `<i class="fas fa-tint"></i> Com ${area} hectare(s) usando ${document.getElementById('tecnologia').options[document.getElementById('tecnologia').selectedIndex].text},<br> você economiza <strong>${economiaTotal.toLocaleString()} litros</strong> (${economiaM3} m³) por safra! ✅`;
+        resultadoDiv.style.color = '#2b6e2f';
+    }
+
+    document.getElementById('calcularEconomiaBtn').addEventListener('click', calcularEconomia);
 </script>
 </body>
 </html>
