@@ -169,12 +169,12 @@
         </div>
     </section>
 
-    <!-- FERRAMENTAS (MAPA + CALCULADORA DE ÁGUA + CALCULADORA DE INSUMOS) -->
+    <!-- FERRAMENTAS (MAPA + CALCULADORAS) -->
     <section id="ferramentas" class="ferramentas">
         <div class="container">
             <div class="section-header">
                 <h2><i class="fas fa-tools"></i> Ferramentas para o Produtor</h2>
-                <p>Meça sua área, calcule economia de água e insumos necessários</p>
+                <p>Meça sua área, calcule economia de água e insumos necessários (em hectares ou alqueires)</p>
             </div>
             <div class="ferramentas-grid">
                 <!-- Mapa interativo -->
@@ -187,9 +187,9 @@
                         <button id="limparMapaBtn" class="btn-secondary"><i class="fas fa-trash-alt"></i> Limpar Polígono</button>
                     </div>
                     <div id="areaResultado" class="resultado-area">
-                        <p><i class="fas fa-ruler-combined"></i> Área: <strong id="areaValor">0</strong> m² (<strong id="areaHectares">0</strong> hectares)</p>
+                        <p><i class="fas fa-ruler-combined"></i> Área: <strong id="areaValor">0</strong> m² (<strong id="areaHectares">0</strong> hectares | <strong id="areaAlqueires">0</strong> alqueires)</p>
                     </div>
-                    <p class="calc-obs">*Clique nos pontos do mapa para criar um polígono. O último ponto é o primeiro.</p>
+                    <p class="calc-obs">1 alqueire ≈ 2,42 hectares (padrão Brasil)</p>
                 </div>
 
                 <!-- Calculadora de economia de água -->
@@ -197,9 +197,15 @@
                     <h3><i class="fas fa-water"></i> Economia de Água</h3>
                     <p>Simule quanto você pode economizar adotando práticas sustentáveis.</p>
                     <div class="calc-input-group">
-                        <label for="areaCalculadora"><i class="fas fa-map-marker-alt"></i> Área (hectares)</label>
-                        <input type="number" id="areaCalculadora" step="0.01" placeholder="Ex: 10">
-                        <button id="usarAreaMapaBtn" class="btn-mini"><i class="fas fa-sync-alt"></i> Usar área do mapa</button>
+                        <label for="areaAgua"><i class="fas fa-map-marker-alt"></i> Área</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="number" id="areaAgua" step="0.01" placeholder="Ex: 10" style="flex:2;">
+                            <select id="unidadeAgua" style="flex:1;">
+                                <option value="ha">Hectares</option>
+                                <option value="alq">Alqueires</option>
+                            </select>
+                        </div>
+                        <button id="usarAreaMapaAgua" class="btn-mini" style="margin-top: 8px;"><i class="fas fa-sync-alt"></i> Usar área do mapa (ha)</button>
                     </div>
                     <div class="calc-input-group">
                         <label for="tecnologia"><i class="fas fa-microchip"></i> Tecnologia sustentável</label>
@@ -214,14 +220,20 @@
                     <p class="calc-obs">*Estimativa baseada em dados da Embrapa e SENAR.</p>
                 </div>
 
-                <!-- Nova calculadora de insumos (adubo, sementes, veneno) -->
+                <!-- Calculadora de insumos -->
                 <div class="insumos-card">
                     <h3><i class="fas fa-calculator"></i> Calculadora de Insumos</h3>
                     <p>Calcule a quantidade necessária de adubo, sementes ou defensivos para sua área.</p>
                     <div class="calc-input-group">
-                        <label for="areaInsumos"><i class="fas fa-map-marker-alt"></i> Área (hectares)</label>
-                        <input type="number" id="areaInsumos" step="0.01" placeholder="Ex: 10">
-                        <button id="usarAreaMapaInsumos" class="btn-mini"><i class="fas fa-sync-alt"></i> Usar área do mapa</button>
+                        <label for="areaInsumos"><i class="fas fa-map-marker-alt"></i> Área</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="number" id="areaInsumos" step="0.01" placeholder="Ex: 10" style="flex:2;">
+                            <select id="unidadeInsumos" style="flex:1;">
+                                <option value="ha">Hectares</option>
+                                <option value="alq">Alqueires</option>
+                            </select>
+                        </div>
+                        <button id="usarAreaMapaInsumos" class="btn-mini" style="margin-top: 8px;"><i class="fas fa-sync-alt"></i> Usar área do mapa (ha)</button>
                     </div>
                     <div class="calc-input-group">
                         <label for="tipoInsumo"><i class="fas fa-boxes"></i> Tipo de insumo</label>
@@ -233,7 +245,7 @@
                     </div>
                     <button id="calcularInsumoBtn" class="btn-primary"><i class="fas fa-chart-line"></i> Calcular necessidade</button>
                     <div id="resultadoInsumo" class="resultado-insumo"></div>
-                    <p class="calc-obs">*Valores médios de referência: adubo: 200 kg/ha, sementes: 50 kg/ha, defensivo: 3 L/ha.</p>
+                    <p class="calc-obs">*Valores médios: adubo 200 kg/ha, sementes 50 kg/ha, defensivo 3 L/ha. 1 alqueire = 2,42 ha.</p>
                 </div>
             </div>
         </div>
@@ -348,7 +360,7 @@
             }
         });
     }, { threshold: 0.5 });
-    observer.observe(document.getElementById('counterSection'));
+    if(document.getElementById('counterSection')) observer.observe(document.getElementById('counterSection'));
 
     // Menu hambúrguer
     const hamburger = document.querySelector('.menu-hamburger');
@@ -391,7 +403,7 @@
         }
     });
 
-    // Mapa interativo
+    // ==================== MAPA INTERATIVO ====================
     var map = L.map('mapa').setView([-23.5505, -46.6333], 12);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
@@ -419,11 +431,14 @@
         if (polygonPoints.length >= 3) {
             const areaM2 = calculateArea(polygonPoints);
             const areaHa = areaM2 / 10000;
+            const areaAlq = areaHa / 2.42;
             document.getElementById('areaValor').innerText = areaM2.toFixed(0);
             document.getElementById('areaHectares').innerText = areaHa.toFixed(2);
+            document.getElementById('areaAlqueires').innerText = areaAlq.toFixed(3);
         } else {
             document.getElementById('areaValor').innerText = '0';
             document.getElementById('areaHectares').innerText = '0';
+            document.getElementById('areaAlqueires').innerText = '0';
         }
     }
 
@@ -447,50 +462,61 @@
     });
     document.getElementById('limparMapaBtn').addEventListener('click', clearPolygon);
 
-    function usarAreaNoCampo(campoId) {
-        const ha = parseFloat(document.getElementById('areaHectares').innerText);
-        if (ha > 0) document.getElementById(campoId).value = ha;
-        else alert('Desenhe uma área no mapa primeiro.');
+    function getAreaEmHectares(valor, unidade) {
+        if (unidade === 'ha') return valor;
+        else if (unidade === 'alq') return valor * 2.42;
+        return valor;
     }
-    document.getElementById('usarAreaMapaBtn').addEventListener('click', () => usarAreaNoCampo('areaCalculadora'));
-    document.getElementById('usarAreaMapaInsumos').addEventListener('click', () => usarAreaNoCampo('areaInsumos'));
 
-    // Calculadora de água
-    const economiaPorHa = { gotejamento: 3200, sensor: 4100, captacao: 2800 };
-    document.getElementById('calcularEconomiaBtn').addEventListener('click', () => {
-        const area = parseFloat(document.getElementById('areaCalculadora').value);
-        const tecnologia = document.getElementById('tecnologia').value;
-        const resDiv = document.getElementById('resultadoEconomia');
-        if (isNaN(area) || area <= 0) {
-            resDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Área inválida.';
-            resDiv.style.color = '#c7362b';
-            return;
-        }
-        const economia = area * economiaPorHa[tecnologia];
-        resDiv.innerHTML = `<i class="fas fa-tint"></i> Economia: <strong>${economia.toLocaleString()} litros</strong> (${(economia/1000).toFixed(1)} m³) por safra. ✅`;
-        resDiv.style.color = '#2b6e2f';
+    document.getElementById('usarAreaMapaAgua').addEventListener('click', () => {
+        const ha = parseFloat(document.getElementById('areaHectares').innerText);
+        if (ha > 0) {
+            document.getElementById('areaAgua').value = ha;
+            document.getElementById('unidadeAgua').value = 'ha';
+        } else alert('Desenhe uma área no mapa primeiro.');
+    });
+    document.getElementById('usarAreaMapaInsumos').addEventListener('click', () => {
+        const ha = parseFloat(document.getElementById('areaHectares').innerText);
+        if (ha > 0) {
+            document.getElementById('areaInsumos').value = ha;
+            document.getElementById('unidadeInsumos').value = 'ha';
+        } else alert('Desenhe uma área no mapa primeiro.');
     });
 
-    // Calculadora de insumos (adubo, sementes, veneno)
-    const taxas = { adubo: 200, sementes: 50, veneno: 3 };
-    const unidades = { adubo: 'kg', sementes: 'kg', veneno: 'litros' };
-    document.getElementById('calcularInsumoBtn').addEventListener('click', () => {
-        const area = parseFloat(document.getElementById('areaInsumos').value);
-        const tipo = document.getElementById('tipoInsumo').value;
-        const resDiv = document.getElementById('resultadoInsumo');
-        if (isNaN(area) || area <= 0) {
-            resDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Insira uma área válida.';
-            resDiv.style.color = '#c7362b';
+    const economiaPorHa = { gotejamento: 3200, sensor: 4100, captacao: 2800 };
+    document.getElementById('calcularEconomiaBtn').addEventListener('click', () => {
+        let areaInput = parseFloat(document.getElementById('areaAgua').value);
+        const unidade = document.getElementById('unidadeAgua').value;
+        if (isNaN(areaInput) || areaInput <= 0) {
+            document.getElementById('resultadoEconomia').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Área inválida.';
+            document.getElementById('resultadoEconomia').style.color = '#c7362b';
             return;
         }
-        const quantidade = area * taxas[tipo];
-        const unidade = unidades[tipo];
-        let nome = '';
-        if (tipo === 'adubo') nome = 'Adubo';
-        else if (tipo === 'sementes') nome = 'Sementes';
-        else nome = 'Defensivo';
-        resDiv.innerHTML = `<i class="fas fa-seedling"></i> Para ${area} hectares, você precisará de <strong>${quantidade.toFixed(1)} ${unidade}</strong> de ${nome}. ✅`;
-        resDiv.style.color = '#2b6e2f';
+        let areaHa = getAreaEmHectares(areaInput, unidade);
+        const tecnologia = document.getElementById('tecnologia').value;
+        const economia = areaHa * economiaPorHa[tecnologia];
+        const unidadeAreaNome = (unidade === 'ha') ? 'hectares' : 'alqueires';
+        document.getElementById('resultadoEconomia').innerHTML = `<i class="fas fa-tint"></i> Para ${areaInput} ${unidadeAreaNome} (${areaHa.toFixed(2)} ha), economia: <strong>${economia.toLocaleString()} litros</strong> (${(economia/1000).toFixed(1)} m³) por safra. ✅`;
+        document.getElementById('resultadoEconomia').style.color = '#2b6e2f';
+    });
+
+    const taxas = { adubo: 200, sementes: 50, veneno: 3 };
+    const unidadesInsumo = { adubo: 'kg', sementes: 'kg', veneno: 'litros' };
+    const nomesInsumo = { adubo: 'Adubo', sementes: 'Sementes', veneno: 'Defensivo' };
+    document.getElementById('calcularInsumoBtn').addEventListener('click', () => {
+        let areaInput = parseFloat(document.getElementById('areaInsumos').value);
+        const unidade = document.getElementById('unidadeInsumos').value;
+        if (isNaN(areaInput) || areaInput <= 0) {
+            document.getElementById('resultadoInsumo').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Área inválida.';
+            document.getElementById('resultadoInsumo').style.color = '#c7362b';
+            return;
+        }
+        let areaHa = getAreaEmHectares(areaInput, unidade);
+        const tipo = document.getElementById('tipoInsumo').value;
+        const quantidade = areaHa * taxas[tipo];
+        const unidadeAreaNome = (unidade === 'ha') ? 'hectares' : 'alqueires';
+        document.getElementById('resultadoInsumo').innerHTML = `<i class="fas fa-seedling"></i> Para ${areaInput} ${unidadeAreaNome} (${areaHa.toFixed(2)} ha), você precisará de <strong>${quantidade.toFixed(1)} ${unidadesInsumo[tipo]}</strong> de ${nomesInsumo[tipo]}. ✅`;
+        document.getElementById('resultadoInsumo').style.color = '#2b6e2f';
     });
 </script>
 </body>
