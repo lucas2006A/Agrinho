@@ -19,7 +19,7 @@ body {
     padding: 0 24px;
 }
 
-/* DARK MODE (mesmo da versão anterior, mas incluindo .insumos-card) */
+/* ==================== MODO ESCURO ==================== */
 body.dark-mode {
     background: #0a120a;
     color: #e5e9e0;
@@ -102,7 +102,7 @@ body.dark-mode .gemini-fab {
     background: linear-gradient(135deg, #0d47a1, #0a3b8a);
 }
 
-/* HEADER (igual) */
+/* HEADER */
 .header {
     background: rgba(255,255,255,0.9);
     backdrop-filter: blur(12px);
@@ -233,7 +233,7 @@ body.dark-mode .gemini-fab {
     opacity: 1;
 }
 
-/* HERO (igual) */
+/* HERO */
 .hero {
     position: relative;
     padding: 90px 0 80px;
@@ -364,7 +364,7 @@ body.dark-mode .gemini-fab {
     fill: white;
 }
 
-/* CARDS DESTAQUE (sem imagens) */
+/* CARDS DESTAQUE */
 .carousel-section {
     padding: 60px 0;
 }
@@ -541,7 +541,7 @@ body.dark-mode .gemini-fab {
 .impacto-card:nth-child(3) .impacto-bar { background: linear-gradient(90deg, #2b6e2f 0%, #2b6e2f 100%, #e0e6d8 100%); }
 .impacto-card:nth-child(4) .impacto-bar { background: linear-gradient(90deg, #2b6e2f 0%, #2b6e2f 70%, #e0e6d8 70%); }
 
-/* FERRAMENTAS (três cards) */
+/* FERRAMENTAS (MAPA, CALCULADORAS) */
 .ferramentas {
     padding: 70px 0;
 }
@@ -609,7 +609,7 @@ body.dark-mode .gemini-fab {
     opacity: 0.6;
 }
 
-/* CONTATO E FOOTER (iguais) */
+/* CONTATO */
 .contato {
     background: #faf9f0;
     padding: 70px 0;
@@ -691,6 +691,8 @@ body.dark-mode .gemini-fab {
     margin: 12px 0;
     font-size: 0.9rem;
 }
+
+/* FOOTER */
 .footer {
     background: #1f3b1d;
     color: #e0e6d8;
