@@ -288,7 +288,7 @@ body.dark-mode .gemini-fab {
     color: #1e2f23;
     margin: 16px 0 28px;
 }
-.btn-primary, .btn-secondary {
+.btn-primary {
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -299,8 +299,6 @@ body.dark-mode .gemini-fab {
     transition: 0.3s;
     border: none;
     cursor: pointer;
-}
-.btn-primary {
     background: linear-gradient(135deg, #2b6e2f, #1f4521);
     color: white;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
@@ -310,6 +308,16 @@ body.dark-mode .gemini-fab {
     box-shadow: 0 12px 28px rgba(0,0,0,0.15);
 }
 .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
     background: white;
     color: #2b6e2f;
     border: 1px solid #2b6e2f;
@@ -541,7 +549,7 @@ body.dark-mode .gemini-fab {
 .impacto-card:nth-child(3) .impacto-bar { background: linear-gradient(90deg, #2b6e2f 0%, #2b6e2f 100%, #e0e6d8 100%); }
 .impacto-card:nth-child(4) .impacto-bar { background: linear-gradient(90deg, #2b6e2f 0%, #2b6e2f 70%, #e0e6d8 70%); }
 
-/* FERRAMENTAS (MAPA, CALCULADORAS) */
+/* FERRAMENTAS (três cards) */
 .ferramentas {
     padding: 70px 0;
 }
