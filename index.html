@@ -14,20 +14,31 @@
 </head>
 <body>
 
-<!-- BOLINHA FLUTUANTE DO GEMINI -->
-<a href="https://gemini.google.com/app?hl=pt-BR" target="_blank" class="gemini-fab">
-    <div class="gemini-icon">
-        <i class="fas fa-robot"></i>
+<!-- BOLINHA FLUTUANTE DA IA -->
+<div id="iaFab" class="ia-fab">
+    <div class="ia-icon"><i class="fas fa-robot"></i></div>
+    <div class="ia-pulse"></div>
+    <span class="ia-tooltip">Pergunte à AgroIA</span>
+</div>
+
+<!-- CHAT DA IA (inicialmente oculto) -->
+<div id="chatWidget" class="chat-widget">
+    <div class="chat-header">
+        <h3><i class="fas fa-robot"></i> AgroIA</h3>
+        <button id="closeChat" class="chat-close">&times;</button>
     </div>
-    <div class="gemini-pulse"></div>
-    <span class="gemini-tooltip">Converse com o Gemini</span>
-</a>
+    <div class="chat-messages" id="chatMessages">
+        <div class="message bot">🌱 Olá! Sou a AgroIA. Pergunte sobre:<br>✅ Economia de água<br>✅ Energia renovável<br>✅ Controle biológico<br>✅ Certificações<br>✅ Dicas para produtor</div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Digite sua pergunta...">
+        <button id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
 
 <header class="header">
     <div class="container header-container">
-        <div class="logo">
-            <h1>Agrinho <span>2026</span></h1>
-        </div>
+        <div class="logo"><h1>Agrinho <span>2026</span></h1></div>
         <nav class="nav">
             <ul class="nav-list">
                 <li><a href="#home" class="active">Home</a></li>
@@ -37,12 +48,8 @@
                 <li><a href="#ferramentas">Ferramentas</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
-            <div class="menu-hamburger">
-                <span></span><span></span><span></span>
-            </div>
-            <button id="darkModeToggle" class="dark-mode-btn" aria-label="Alternar modo claro/escuro">
-                <i class="fas fa-moon"></i>
-            </button>
+            <div class="menu-hamburger"><span></span><span></span><span></span></div>
+            <button id="darkModeToggle" class="dark-mode-btn"><i class="fas fa-moon"></i></button>
         </nav>
     </div>
 </header>
@@ -60,63 +67,24 @@
                 <a href="#ferramentas" class="btn-primary">Explorar Ferramentas <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="hero-stats" id="counterSection">
-                <div class="stat-card">
-                    <h3 id="count1">0</h3>
-                    <p>Propriedades Sustentáveis</p>
-                    <i class="fas fa-tractor"></i>
-                </div>
-                <div class="stat-card">
-                    <h3 id="count2">0<span>%</span></h3>
-                    <p>Redução de Emissões</p>
-                    <i class="fas fa-cloud-sun"></i>
-                </div>
-                <div class="stat-card">
-                    <h3 id="count3">0</h3>
-                    <p>Mil Hectares Protegidos</p>
-                    <i class="fas fa-tree"></i>
-                </div>
-                <div class="stat-card">
-                    <h3 id="count4">0</h3>
-                    <p>Espécies Preservadas</p>
-                    <i class="fas fa-paw"></i>
-                </div>
+                <div class="stat-card"><h3 id="count1">0</h3><p>Propriedades Sustentáveis</p><i class="fas fa-tractor"></i></div>
+                <div class="stat-card"><h3 id="count2">0<span>%</span></h3><p>Redução de Emissões</p><i class="fas fa-cloud-sun"></i></div>
+                <div class="stat-card"><h3 id="count3">0</h3><p>Mil Hectares Protegidos</p><i class="fas fa-tree"></i></div>
+                <div class="stat-card"><h3 id="count4">0</h3><p>Espécies Preservadas</p><i class="fas fa-paw"></i></div>
             </div>
         </div>
-        <div class="hero-wave">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1200,77,1248,64,1248,64L1248,120L0,120Z"></path>
-            </svg>
-        </div>
+        <div class="hero-wave"><svg viewBox="0 0 1200 120"><path d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1200,77,1248,64,1248,64L1248,120L0,120Z"></path></svg></div>
     </section>
 
     <!-- CARROSSEL DE PRÁTICAS -->
     <section class="carousel-section">
         <div class="container">
-            <div class="section-header">
-                <h2><i class="fas fa-leaf"></i> Sustentabilidade em Movimento</h2>
-                <p>Práticas que transformam o campo</p>
-            </div>
+            <div class="section-header"><h2><i class="fas fa-leaf"></i> Sustentabilidade em Movimento</h2><p>Práticas que transformam o campo</p></div>
             <div class="praticas-highlight">
-                <div class="highlight-card">
-                    <i class="fas fa-tint"></i>
-                    <h3>Irrigação Inteligente</h3>
-                    <p>Economia de até 60% de água com tecnologias automatizadas</p>
-                </div>
-                <div class="highlight-card">
-                    <i class="fas fa-solar-panel"></i>
-                    <h3>Energia Renovável</h3>
-                    <p>Energia solar e biogás reduzindo custos e emissões</p>
-                </div>
-                <div class="highlight-card">
-                    <i class="fas fa-seedling"></i>
-                    <h3>Plantio Sustentável</h3>
-                    <p>Técnicas que preservam o solo e aumentam produtividade</p>
-                </div>
-                <div class="highlight-card">
-                    <i class="fas fa-recycle"></i>
-                    <h3>Reciclagem Agrícola</h3>
-                    <p>Aproveitamento de resíduos como nutrientes para o solo</p>
-                </div>
+                <div class="highlight-card"><i class="fas fa-tint"></i><h3>Irrigação Inteligente</h3><p>Economia de até 60% de água</p></div>
+                <div class="highlight-card"><i class="fas fa-solar-panel"></i><h3>Energia Renovável</h3><p>Solar e biogás no campo</p></div>
+                <div class="highlight-card"><i class="fas fa-seedling"></i><h3>Plantio Sustentável</h3><p>Preserva o solo e aumenta produtividade</p></div>
+                <div class="highlight-card"><i class="fas fa-recycle"></i><h3>Reciclagem Agrícola</h3><p>Resíduos viram nutrientes</p></div>
             </div>
         </div>
     </section>
@@ -124,29 +92,11 @@
     <!-- SOBRE -->
     <section id="sobre" class="sobre">
         <div class="container">
-            <div class="section-header">
-                <h2>Sobre Agronegócio Sustentável</h2>
-                <p>Práticas que integram produtividade e preservação ambiental</p>
-            </div>
+            <div class="section-header"><h2>Sobre Agronegócio Sustentável</h2><p>Práticas que integram produtividade e preservação ambiental</p></div>
             <div class="sobre-cards">
-                <div class="sobre-card">
-                    <div class="sobre-card-icon"><i class="fas fa-leaf"></i></div>
-                    <h3>Produção Responsável</h3>
-                    <p>Utilizando técnicas modernas que respeitam o meio ambiente e garantem produtividade máxima.</p>
-                    <div class="card-glow"></div>
-                </div>
-                <div class="sobre-card">
-                    <div class="sobre-card-icon"><i class="fas fa-tint"></i></div>
-                    <h3>Gestão de Água</h3>
-                    <p>Sistemas inteligentes de irrigação que economizam água e preservam recursos hídricos.</p>
-                    <div class="card-glow"></div>
-                </div>
-                <div class="sobre-card">
-                    <div class="sobre-card-icon"><i class="fas fa-tree"></i></div>
-                    <h3>Conservação Florestal</h3>
-                    <p>Mantendo a biodiversidade através de práticas que integram floresta e agricultura.</p>
-                    <div class="card-glow"></div>
-                </div>
+                <div class="sobre-card"><div class="sobre-card-icon"><i class="fas fa-leaf"></i></div><h3>Produção Responsável</h3><p>Utilizando técnicas modernas que respeitam o meio ambiente e garantem produtividade máxima.</p><div class="card-glow"></div></div>
+                <div class="sobre-card"><div class="sobre-card-icon"><i class="fas fa-tint"></i></div><h3>Gestão de Água</h3><p>Sistemas inteligentes de irrigação que economizam água e preservam recursos hídricos.</p><div class="card-glow"></div></div>
+                <div class="sobre-card"><div class="sobre-card-icon"><i class="fas fa-tree"></i></div><h3>Conservação Florestal</h3><p>Mantendo a biodiversidade através de práticas que integram floresta e agricultura.</p><div class="card-glow"></div></div>
             </div>
         </div>
     </section>
@@ -154,10 +104,7 @@
     <!-- PRÁTICAS SUSTENTÁVEIS -->
     <section id="praticas" class="praticas">
         <div class="container">
-            <div class="section-header">
-                <h2>Práticas Sustentáveis</h2>
-                <p>Soluções que transformam o campo</p>
-            </div>
+            <div class="section-header"><h2>Práticas Sustentáveis</h2><p>Soluções que transformam o campo</p></div>
             <div class="praticas-grid">
                 <div class="pratica-item"><i class="fas fa-sync-alt"></i><h3>Rotação de Culturas</h3><p>Alternância de cultivos para melhorar a fertilidade do solo.</p><div class="item-overlay"></div></div>
                 <div class="pratica-item"><i class="fas fa-microchip"></i><h3>Irrigação inteligente</h3><p>Sistemas automatizados que economizam água.</p><div class="item-overlay"></div></div>
@@ -169,30 +116,30 @@
         </div>
     </section>
 
-    <!-- FERRAMENTAS -->
+    <!-- FERRAMENTAS: MAPA + CALCULADORAS -->
     <section id="ferramentas" class="ferramentas">
         <div class="container">
-            <div class="section-header">
-                <h2><i class="fas fa-tools"></i> Ferramentas para o Produtor</h2>
-                <p>Meça sua área, calcule economia de água e insumos necessários (em hectares ou alqueires)</p>
-            </div>
+            <div class="section-header"><h2><i class="fas fa-tools"></i> Ferramentas para o Produtor</h2><p>Meça sua área, calcule economia de água e insumos</p></div>
             <div class="ferramentas-grid">
-                <!-- Mapa interativo -->
+                <!-- MAPA INTERATIVO COM BUSCA -->
                 <div class="mapa-card">
                     <h3><i class="fas fa-map-marked-alt"></i> Mapeamento de Área</h3>
-                    <p>Clique no mapa para marcar os vértices da sua propriedade.</p>
-                    <div id="mapa" style="height: 350px; border-radius: 24px; margin-bottom: 16px;"></div>
+                    <div class="map-search">
+                        <input type="text" id="placeSearch" placeholder="Digite o nome do lugar (ex: Londrina, PR)" class="search-input">
+                        <button id="searchBtn" class="btn-mini"><i class="fas fa-search"></i> Buscar</button>
+                    </div>
+                    <div id="mapa" style="height: 500px; border-radius: 24px; margin-top: 12px; margin-bottom: 16px;"></div>
                     <div class="mapa-buttons">
                         <button id="calcularAreaBtn" class="btn-secondary"><i class="fas fa-draw-polygon"></i> Calcular Área</button>
                         <button id="limparMapaBtn" class="btn-secondary"><i class="fas fa-trash-alt"></i> Limpar Polígono</button>
                     </div>
                     <div id="areaResultado" class="resultado-area">
-                        <p><i class="fas fa-ruler-combined"></i> Área: <strong id="areaValor">0</strong> m² (<strong id="areaHectares">0</strong> hectares | <strong id="areaAlqueires">0</strong> alqueires)</p>
+                        <p><i class="fas fa-ruler-combined"></i> Área: <strong id="areaValor">0</strong> m² (<strong id="areaHectares">0</strong> ha | <strong id="areaAlqueires">0</strong> alqueires)</p>
                     </div>
-                    <p class="calc-obs">1 alqueire ≈ 2,42 hectares (padrão Brasil)</p>
+                    <p class="calc-obs">1 alqueire ≈ 2,42 ha. Clique no mapa para marcar pontos.</p>
                 </div>
 
-                <!-- Calculadora de economia de água -->
+                <!-- CALCULADORA ECONOMIA DE ÁGUA -->
                 <div class="calculadora-card">
                     <h3><i class="fas fa-water"></i> Economia de Água</h3>
                     <p>Simule quanto você pode economizar adotando práticas sustentáveis.</p>
@@ -220,7 +167,7 @@
                     <p class="calc-obs">*Estimativa baseada em dados da Embrapa e SENAR.</p>
                 </div>
 
-                <!-- Calculadora de insumos -->
+                <!-- CALCULADORA DE INSUMOS -->
                 <div class="insumos-card">
                     <h3><i class="fas fa-calculator"></i> Calculadora de Insumos</h3>
                     <p>Calcule a quantidade necessária de adubo, sementes ou defensivos para sua área.</p>
@@ -254,10 +201,7 @@
     <!-- IMPACTO -->
     <section id="impacto" class="impacto">
         <div class="container">
-            <div class="section-header">
-                <h2>Informações</h2>
-                <p>Resultados concretos da sustentabilidade no campo</p>
-            </div>
+            <div class="section-header"><h2>Informações</h2><p>Resultados concretos da sustentabilidade no campo</p></div>
             <div class="impacto-grid">
                 <div class="impacto-card"><i class="fas fa-cloud-sun"></i><h3>Redução de Carbono</h3><p>Práticas sustentáveis reduzem emissões de CO₂ em até 60%</p><div class="impacto-bar"></div></div>
                 <div class="impacto-card"><i class="fas fa-water"></i><h3>Conservação de Água</h3><p>Economia de 40% no consumo de água através de irrigação inteligente</p><div class="impacto-bar"></div></div>
@@ -270,10 +214,7 @@
     <!-- CONTATO -->
     <section id="contato" class="contato">
         <div class="container">
-            <div class="section-header">
-                <h2>Entre em Contato</h2>
-                <p>Envie sua mensagem ou siga nossas redes sociais</p>
-            </div>
+            <div class="section-header"><h2>Entre em Contato</h2><p>Envie sua mensagem ou siga nossas redes sociais</p></div>
             <div class="contato-wrapper">
                 <form id="formContato" class="form-contato">
                     <div class="form-group"><label for="nome"><i class="fas fa-user"></i> Seu Nome</label><input type="text" id="nome" placeholder="Digite seu nome" required><span class="error-message" id="error-nome"></span></div>
@@ -302,110 +243,93 @@
 
 <footer class="footer">
     <div class="container footer-container">
-        <div class="footer-brand">
-            <h2>Agrinho <span>2026</span></h2>
-            <p>Agro forte, futuro sustentável</p>
-        </div>
-        <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#praticas">Práticas</a>
-            <a href="#impacto">Impacto</a>
-            <a href="#ferramentas">Ferramentas</a>
-            <a href="#contato">Contato</a>
-        </div>
-        <div class="footer-copy">
-            <p>© 2026 Agrinho – Agro Forte, Futuro Sustentável</p>
-            <p class="footer-agrinho">agrinho</p>
-        </div>
+        <div class="footer-brand"><h2>Agrinho <span>2026</span></h2><p>Agro forte, futuro sustentável</p></div>
+        <div class="footer-links"><a href="#home">Home</a><a href="#sobre">Sobre</a><a href="#praticas">Práticas</a><a href="#impacto">Impacto</a><a href="#ferramentas">Ferramentas</a><a href="#contato">Contato</a></div>
+        <div class="footer-copy"><p>© 2026 Agrinho – Agro Forte, Futuro Sustentável</p><p class="footer-agrinho">agrinho</p></div>
     </div>
 </footer>
 
 <script>
-    // Modo claro/escuro
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    darkModeToggle.addEventListener('click', () => {
+    // DARK MODE
+    const darkToggle = document.getElementById('darkModeToggle');
+    darkToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
-        const icon = darkModeToggle.querySelector('i');
+        const i = darkToggle.querySelector('i');
         if (document.body.classList.contains('dark-mode')) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
+            i.classList.remove('fa-moon');
+            i.classList.add('fa-sun');
         } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
+            i.classList.remove('fa-sun');
+            i.classList.add('fa-moon');
         }
     });
 
-    // Contadores animados
-    function animateNumber(element, start, end, duration, hasPercent = false) {
+    // CONTADORES
+    function animateNumber(el, start, end, duration, percent = false) {
         let startTime = null;
-        const step = (timestamp) => {
-            if (!startTime) startTime = timestamp;
-            const progress = Math.min((timestamp - startTime) / duration, 1);
-            const value = Math.floor(progress * (end - start) + start);
-            element.innerText = value + (hasPercent ? "%" : "");
-            if (progress < 1) requestAnimationFrame(step);
-            else element.innerText = end + (hasPercent ? "%" : "");
+        const step = (t) => {
+            if (!startTime) startTime = t;
+            const p = Math.min((t - startTime) / duration, 1);
+            const v = Math.floor(p * (end - start) + start);
+            el.innerText = v + (percent ? '%' : '');
+            if (p < 1) requestAnimationFrame(step);
+            else el.innerText = end + (percent ? '%' : '');
         };
         requestAnimationFrame(step);
     }
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateNumber(document.getElementById('count1'), 0, 2500, 2000);
-                animateNumber(document.getElementById('count2'), 0, 85, 1500, true);
-                animateNumber(document.getElementById('count3'), 0, 150, 2000);
-                animateNumber(document.getElementById('count4'), 0, 45, 1500);
-                observer.disconnect();
-            }
-        });
+        if (entries[0].isIntersecting) {
+            animateNumber(document.getElementById('count1'), 0, 2500, 2000);
+            animateNumber(document.getElementById('count2'), 0, 85, 1500, true);
+            animateNumber(document.getElementById('count3'), 0, 150, 2000);
+            animateNumber(document.getElementById('count4'), 0, 45, 1500);
+            observer.disconnect();
+        }
     }, { threshold: 0.5 });
-    if(document.getElementById('counterSection')) observer.observe(document.getElementById('counterSection'));
+    if (document.getElementById('counterSection')) observer.observe(document.getElementById('counterSection'));
 
-    // Menu hambúrguer
+    // MENU HAMBÚRGUER
     const hamburger = document.querySelector('.menu-hamburger');
     const navList = document.querySelector('.nav-list');
     hamburger.addEventListener('click', () => navList.classList.toggle('active'));
-    document.querySelectorAll('.nav-list a').forEach(link => link.addEventListener('click', () => navList.classList.remove('active')));
+    document.querySelectorAll('.nav-list a').forEach(a => a.addEventListener('click', () => navList.classList.remove('active')));
 
-    // Scroll ativo
+    // SCROLL ATIVO
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-list a');
     window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
-        navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === `#${current}`) link.classList.add('active'); });
+        let cur = '';
+        sections.forEach(s => { if (scrollY >= s.offsetTop - 100) cur = s.getAttribute('id'); });
+        navLinks.forEach(l => { l.classList.remove('active'); if (l.getAttribute('href') === `#${cur}`) l.classList.add('active'); });
     });
 
-    // Formulário de contato
-    const form = document.getElementById('formContato');
-    form.addEventListener('submit', (e) => {
+    // FORM CONTATO
+    const formContato = document.getElementById('formContato');
+    formContato.addEventListener('submit', (e) => {
         e.preventDefault();
         let valid = true;
-        document.getElementById('error-nome').innerText = '';
-        document.getElementById('error-email').innerText = '';
-        document.getElementById('error-mensagem').innerText = '';
+        ['nome', 'email', 'mensagem'].forEach(id => document.getElementById(`error-${id}`).innerText = '');
         const nome = document.getElementById('nome').value.trim();
         const email = document.getElementById('email').value.trim();
         const msg = document.getElementById('mensagem').value.trim();
         if (!nome) { document.getElementById('error-nome').innerText = 'Preencha este campo.'; valid = false; }
         if (!/^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email)) { document.getElementById('error-email').innerText = 'E-mail inválido.'; valid = false; }
         if (!msg) { document.getElementById('error-mensagem').innerText = 'Digite sua mensagem.'; valid = false; }
-        const feedback = document.getElementById('formFeedback');
+        const fb = document.getElementById('formFeedback');
         if (valid) {
-            feedback.innerHTML = '<i class="fas fa-check-circle"></i> Mensagem enviada com sucesso!';
-            feedback.style.color = '#2b6e2f';
-            form.reset();
-            setTimeout(() => feedback.innerHTML = '', 4000);
+            fb.innerHTML = '<i class="fas fa-check-circle"></i> Mensagem enviada com sucesso!';
+            fb.style.color = '#2b6e2f';
+            formContato.reset();
+            setTimeout(() => fb.innerHTML = '', 4000);
         } else {
-            feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Corrija os campos destacados.';
-            feedback.style.color = '#c7362b';
+            fb.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Corrija os campos destacados.';
+            fb.style.color = '#c7362b';
         }
     });
 
-    // MAPA INTERATIVO
+    // ========== MAPA ==========
     var map = L.map('mapa').setView([-23.5505, -46.6333], 12);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
         subdomains: 'abcd',
         maxZoom: 19
@@ -416,25 +340,25 @@
 
     function calculateArea(latLngs) {
         let area = 0;
-        const points = latLngs.map(p => [p.lat, p.lng]);
-        for (let i = 0; i < points.length; i++) {
-            let j = (i + 1) % points.length;
-            area += points[i][0] * points[j][1];
-            area -= points[j][0] * points[i][1];
+        const pts = latLngs.map(p => [p.lat, p.lng]);
+        for (let i = 0; i < pts.length; i++) {
+            let j = (i + 1) % pts.length;
+            area += pts[i][0] * pts[j][1];
+            area -= pts[j][0] * pts[i][1];
         }
         area = Math.abs(area) / 2;
         const metersPerDegree = 111319.9;
-        return area * (metersPerDegree * metersPerDegree);
+        return area * metersPerDegree * metersPerDegree;
     }
 
     function updateAreaDisplay() {
         if (polygonPoints.length >= 3) {
-            const areaM2 = calculateArea(polygonPoints);
-            const areaHa = areaM2 / 10000;
-            const areaAlq = areaHa / 2.42;
-            document.getElementById('areaValor').innerText = areaM2.toFixed(0);
-            document.getElementById('areaHectares').innerText = areaHa.toFixed(2);
-            document.getElementById('areaAlqueires').innerText = areaAlq.toFixed(3);
+            const m2 = calculateArea(polygonPoints);
+            const ha = m2 / 10000;
+            const alq = ha / 2.42;
+            document.getElementById('areaValor').innerText = m2.toFixed(0);
+            document.getElementById('areaHectares').innerText = ha.toFixed(2);
+            document.getElementById('areaAlqueires').innerText = alq.toFixed(3);
         } else {
             document.getElementById('areaValor').innerText = '0';
             document.getElementById('areaHectares').innerText = '0';
@@ -462,41 +386,53 @@
     });
     document.getElementById('limparMapaBtn').addEventListener('click', clearPolygon);
 
+    // BUSCA NO MAPA
+    const searchBtn = document.getElementById('searchBtn');
+    const placeInput = document.getElementById('placeSearch');
+    async function searchPlace() {
+        const query = placeInput.value.trim();
+        if (!query) return alert('Digite um lugar.');
+        const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`;
+        try {
+            const resp = await fetch(url);
+            const data = await resp.json();
+            if (data && data.length > 0) map.setView([data[0].lat, data[0].lon], 13);
+            else alert('Local não encontrado.');
+        } catch (err) { alert('Erro na busca.'); }
+    }
+    searchBtn.addEventListener('click', searchPlace);
+    placeInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') searchPlace(); });
+
     function getAreaEmHectares(valor, unidade) {
         if (unidade === 'ha') return valor;
-        else if (unidade === 'alq') return valor * 2.42;
+        if (unidade === 'alq') return valor * 2.42;
         return valor;
     }
-
     document.getElementById('usarAreaMapaAgua').addEventListener('click', () => {
         const ha = parseFloat(document.getElementById('areaHectares').innerText);
-        if (ha > 0) {
-            document.getElementById('areaAgua').value = ha;
-            document.getElementById('unidadeAgua').value = 'ha';
-        } else alert('Desenhe uma área no mapa primeiro.');
+        if (ha > 0) { document.getElementById('areaAgua').value = ha; document.getElementById('unidadeAgua').value = 'ha'; }
+        else alert('Desenhe uma área no mapa primeiro.');
     });
     document.getElementById('usarAreaMapaInsumos').addEventListener('click', () => {
         const ha = parseFloat(document.getElementById('areaHectares').innerText);
-        if (ha > 0) {
-            document.getElementById('areaInsumos').value = ha;
-            document.getElementById('unidadeInsumos').value = 'ha';
-        } else alert('Desenhe uma área no mapa primeiro.');
+        if (ha > 0) { document.getElementById('areaInsumos').value = ha; document.getElementById('unidadeInsumos').value = 'ha'; }
+        else alert('Desenhe uma área no mapa primeiro.');
     });
 
     const economiaPorHa = { gotejamento: 3200, sensor: 4100, captacao: 2800 };
     document.getElementById('calcularEconomiaBtn').addEventListener('click', () => {
-        let areaInput = parseFloat(document.getElementById('areaAgua').value);
-        const unidade = document.getElementById('unidadeAgua').value;
-        if (isNaN(areaInput) || areaInput <= 0) {
+        let val = parseFloat(document.getElementById('areaAgua').value);
+        const unid = document.getElementById('unidadeAgua').value;
+        if (isNaN(val) || val <= 0) {
             document.getElementById('resultadoEconomia').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Área inválida.';
             document.getElementById('resultadoEconomia').style.color = '#c7362b';
             return;
         }
-        let areaHa = getAreaEmHectares(areaInput, unidade);
-        const tecnologia = document.getElementById('tecnologia').value;
-        const economia = areaHa * economiaPorHa[tecnologia];
-        const unidadeAreaNome = (unidade === 'ha') ? 'hectares' : 'alqueires';
-        document.getElementById('resultadoEconomia').innerHTML = `<i class="fas fa-tint"></i> Para ${areaInput} ${unidadeAreaNome} (${areaHa.toFixed(2)} ha), economia: <strong>${economia.toLocaleString()} litros</strong> (${(economia/1000).toFixed(1)} m³) por safra. ✅`;
+        let ha = getAreaEmHectares(val, unid);
+        const tec = document.getElementById('tecnologia').value;
+        const eco = ha * economiaPorHa[tec];
+        const nomeUnid = (unid === 'ha') ? 'hectares' : 'alqueires';
+        document.getElementById('resultadoEconomia').innerHTML = `<i class="fas fa-tint"></i> Para ${val} ${nomeUnid} (${ha.toFixed(2)} ha), economia: <strong>${eco.toLocaleString()} litros</strong> (${(eco / 1000).toFixed(1)} m³) por safra. ✅`;
         document.getElementById('resultadoEconomia').style.color = '#2b6e2f';
     });
 
@@ -504,19 +440,94 @@
     const unidadesInsumo = { adubo: 'kg', sementes: 'kg', veneno: 'litros' };
     const nomesInsumo = { adubo: 'Adubo', sementes: 'Sementes', veneno: 'Defensivo' };
     document.getElementById('calcularInsumoBtn').addEventListener('click', () => {
-        let areaInput = parseFloat(document.getElementById('areaInsumos').value);
-        const unidade = document.getElementById('unidadeInsumos').value;
-        if (isNaN(areaInput) || areaInput <= 0) {
+        let val = parseFloat(document.getElementById('areaInsumos').value);
+        const unid = document.getElementById('unidadeInsumos').value;
+        if (isNaN(val) || val <= 0) {
             document.getElementById('resultadoInsumo').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Área inválida.';
             document.getElementById('resultadoInsumo').style.color = '#c7362b';
             return;
         }
-        let areaHa = getAreaEmHectares(areaInput, unidade);
+        let ha = getAreaEmHectares(val, unid);
         const tipo = document.getElementById('tipoInsumo').value;
-        const quantidade = areaHa * taxas[tipo];
-        const unidadeAreaNome = (unidade === 'ha') ? 'hectares' : 'alqueires';
-        document.getElementById('resultadoInsumo').innerHTML = `<i class="fas fa-seedling"></i> Para ${areaInput} ${unidadeAreaNome} (${areaHa.toFixed(2)} ha), você precisará de <strong>${quantidade.toFixed(1)} ${unidadesInsumo[tipo]}</strong> de ${nomesInsumo[tipo]}. ✅`;
+        const qtd = ha * taxas[tipo];
+        const nomeUnid = (unid === 'ha') ? 'hectares' : 'alqueires';
+        document.getElementById('resultadoInsumo').innerHTML = `<i class="fas fa-seedling"></i> Para ${val} ${nomeUnid} (${ha.toFixed(2)} ha), você precisará de <strong>${qtd.toFixed(1)} ${unidadesInsumo[tipo]}</strong> de ${nomesInsumo[tipo]}. ✅`;
         document.getElementById('resultadoInsumo').style.color = '#2b6e2f';
+    });
+
+    // ========== IA CHAT ==========
+    const iaFab = document.getElementById('iaFab');
+    const chatWidget = document.getElementById('chatWidget');
+    const closeChat = document.getElementById('closeChat');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendChatBtn');
+    const chatMessages = document.getElementById('chatMessages');
+
+    function toggleChat() {
+        if (chatWidget.style.display === 'flex') {
+            chatWidget.style.display = 'none';
+        } else {
+            chatWidget.style.display = 'flex';
+        }
+    }
+
+    iaFab.addEventListener('click', toggleChat);
+    closeChat.addEventListener('click', toggleChat);
+
+    // Banco de respostas da IA
+    const respostas = {
+        "agua": "💧 A economia de água pode ser feita com irrigação por gotejamento, captação de chuva e sensores de umidade. Redução de até 60%!",
+        "irriga": "🌽 Sistemas de irrigação inteligente economizam água e aumentam produtividade. Gotejamento é muito eficiente.",
+        "energia": "⚡ Energia solar e biogás são ótimas opções. Reduzem custos e emissões de carbono.",
+        "solar": "☀️ Placas solares alimentam bombas, cercas elétricas e sistemas de irrigação. Muitos programas oferecem financiamento.",
+        "solo": "🌱 Solo vivo é rico em matéria orgânica. Plantio direto, rotação de culturas e adubação verde mantêm a fertilidade.",
+        "fertilidade": "🌿 Adubos verdes (crotalária) fixam nitrogênio e melhoram a estrutura do solo.",
+        "bioinsumo": "🍃 Bioinsumos usam microrganismos ou extratos vegetais para controlar pragas sem danos ao ambiente.",
+        "controle biológico": "🐞 Joaninhas, vespas e fungos combatem pragas naturalmente. Ex: Bacillus thuringiensis.",
+        "ilpf": "🌳 Integração Lavoura-Pecuária-Floresta recupera pastagens, sequestra carbono e gera renda diversificada.",
+        "reciclagem": "♻️ Devolva embalagens de defensivos em pontos de coleta. Muitos sindicatos têm logística reversa.",
+        "certificação": "📜 Selos como 'Agricultura Sustentável', 'Orgânico Brasil' e 'Rainforest Alliance' atestam boas práticas.",
+        "orgânico": "🌻 Produção orgânica evita agrotóxicos. Mercado crescente valoriza quem preserva o ambiente.",
+        "dica": "💡 Plante árvores nativas em APPs. Protege nascentes e atrai polinizadores.",
+        "pequeno produtor": "👨‍🌾 Comece com compostagem, coleta de água da chuva e rotação de culturas.",
+        "agro": "🚜 Agro forte e sustentável é aquele que usa tecnologia para produzir mais com menos impacto.",
+        "sustentável": "♻️ Sustentabilidade no campo: atender às necessidades atuais sem comprometer o futuro.",
+        "ajuda": "🌾 Posso ajudar com: água, energia, solo, bioinsumos, ILPF, certificações, dicas para pequenos produtores!",
+        "olá": "🌱 Olá! Como posso ajudar você hoje no caminho do agro sustentável?",
+        "obrigado": "😊 Por nada! Estou aqui para ajudar na construção de um agro mais forte e verde.",
+        "padrão": "🤖 Ainda aprendendo sobre isso. Pergunte sobre: água, energia, solo, bioinsumos, ILPF, certificação ou peça uma dica."
+    };
+
+    function getResposta(pergunta) {
+        const texto = pergunta.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        for (let [chave, resposta] of Object.entries(respostas)) {
+            if (texto.includes(chave)) {
+                return resposta;
+            }
+        }
+        return respostas["padrão"];
+    }
+
+    function addMessage(sender, text) {
+        const div = document.createElement('div');
+        div.classList.add('message', sender);
+        div.innerHTML = text;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function sendMessage() {
+        const pergunta = chatInput.value.trim();
+        if (pergunta === "") return;
+        addMessage('user', pergunta);
+        const resposta = getResposta(pergunta);
+        addMessage('bot', resposta);
+        chatInput.value = '';
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
     });
 </script>
 </body>
