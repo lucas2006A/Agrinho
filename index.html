@@ -14,27 +14,12 @@
 </head>
 <body>
 
-<!-- BOLINHA FLUTUANTE DA IA -->
-<div id="iaFab" class="ia-fab">
-    <div class="ia-icon"><i class="fas fa-robot"></i></div>
+<!-- BOLINHA FLUTUANTE PARA O GEMINI CHAT (abre em nova aba) -->
+<a href="https://geminichat-sawkuv5c.manus.space/" target="_blank" rel="noopener noreferrer" class="ia-fab">
+    <div class="ia-icon"><i class="fas fa-comment-dots"></i></div>
     <div class="ia-pulse"></div>
-    <span class="ia-tooltip">Pergunte à AgroIA</span>
-</div>
-
-<!-- CHAT DA IA (inicialmente oculto) -->
-<div id="chatWidget" class="chat-widget">
-    <div class="chat-header">
-        <h3><i class="fas fa-robot"></i> AgroIA</h3>
-        <button id="closeChat" class="chat-close">&times;</button>
-    </div>
-    <div class="chat-messages" id="chatMessages">
-        <div class="message bot">🌱 Olá! Sou a AgroIA. Pergunte sobre:<br>✅ Economia de água<br>✅ Energia renovável<br>✅ Controle biológico<br>✅ Certificações<br>✅ Dicas para produtor</div>
-    </div>
-    <div class="chat-input-area">
-        <input type="text" id="chatInput" placeholder="Digite sua pergunta...">
-        <button id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
-    </div>
-</div>
+    <span class="ia-tooltip">Converse com Gemini Chat</span>
+</a>
 
 <header class="header">
     <div class="container header-container">
@@ -453,81 +438,6 @@
         const nomeUnid = (unid === 'ha') ? 'hectares' : 'alqueires';
         document.getElementById('resultadoInsumo').innerHTML = `<i class="fas fa-seedling"></i> Para ${val} ${nomeUnid} (${ha.toFixed(2)} ha), você precisará de <strong>${qtd.toFixed(1)} ${unidadesInsumo[tipo]}</strong> de ${nomesInsumo[tipo]}. ✅`;
         document.getElementById('resultadoInsumo').style.color = '#2b6e2f';
-    });
-
-    // ========== IA CHAT ==========
-    const iaFab = document.getElementById('iaFab');
-    const chatWidget = document.getElementById('chatWidget');
-    const closeChat = document.getElementById('closeChat');
-    const chatInput = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('sendChatBtn');
-    const chatMessages = document.getElementById('chatMessages');
-
-    function toggleChat() {
-        if (chatWidget.style.display === 'flex') {
-            chatWidget.style.display = 'none';
-        } else {
-            chatWidget.style.display = 'flex';
-        }
-    }
-
-    iaFab.addEventListener('click', toggleChat);
-    closeChat.addEventListener('click', toggleChat);
-
-    // Banco de respostas da IA
-    const respostas = {
-        "agua": "💧 A economia de água pode ser feita com irrigação por gotejamento, captação de chuva e sensores de umidade. Redução de até 60%!",
-        "irriga": "🌽 Sistemas de irrigação inteligente economizam água e aumentam produtividade. Gotejamento é muito eficiente.",
-        "energia": "⚡ Energia solar e biogás são ótimas opções. Reduzem custos e emissões de carbono.",
-        "solar": "☀️ Placas solares alimentam bombas, cercas elétricas e sistemas de irrigação. Muitos programas oferecem financiamento.",
-        "solo": "🌱 Solo vivo é rico em matéria orgânica. Plantio direto, rotação de culturas e adubação verde mantêm a fertilidade.",
-        "fertilidade": "🌿 Adubos verdes (crotalária) fixam nitrogênio e melhoram a estrutura do solo.",
-        "bioinsumo": "🍃 Bioinsumos usam microrganismos ou extratos vegetais para controlar pragas sem danos ao ambiente.",
-        "controle biológico": "🐞 Joaninhas, vespas e fungos combatem pragas naturalmente. Ex: Bacillus thuringiensis.",
-        "ilpf": "🌳 Integração Lavoura-Pecuária-Floresta recupera pastagens, sequestra carbono e gera renda diversificada.",
-        "reciclagem": "♻️ Devolva embalagens de defensivos em pontos de coleta. Muitos sindicatos têm logística reversa.",
-        "certificação": "📜 Selos como 'Agricultura Sustentável', 'Orgânico Brasil' e 'Rainforest Alliance' atestam boas práticas.",
-        "orgânico": "🌻 Produção orgânica evita agrotóxicos. Mercado crescente valoriza quem preserva o ambiente.",
-        "dica": "💡 Plante árvores nativas em APPs. Protege nascentes e atrai polinizadores.",
-        "pequeno produtor": "👨‍🌾 Comece com compostagem, coleta de água da chuva e rotação de culturas.",
-        "agro": "🚜 Agro forte e sustentável é aquele que usa tecnologia para produzir mais com menos impacto.",
-        "sustentável": "♻️ Sustentabilidade no campo: atender às necessidades atuais sem comprometer o futuro.",
-        "ajuda": "🌾 Posso ajudar com: água, energia, solo, bioinsumos, ILPF, certificações, dicas para pequenos produtores!",
-        "olá": "🌱 Olá! Como posso ajudar você hoje no caminho do agro sustentável?",
-        "obrigado": "😊 Por nada! Estou aqui para ajudar na construção de um agro mais forte e verde.",
-        "padrão": "🤖 Ainda aprendendo sobre isso. Pergunte sobre: água, energia, solo, bioinsumos, ILPF, certificação ou peça uma dica."
-    };
-
-    function getResposta(pergunta) {
-        const texto = pergunta.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        for (let [chave, resposta] of Object.entries(respostas)) {
-            if (texto.includes(chave)) {
-                return resposta;
-            }
-        }
-        return respostas["padrão"];
-    }
-
-    function addMessage(sender, text) {
-        const div = document.createElement('div');
-        div.classList.add('message', sender);
-        div.innerHTML = text;
-        chatMessages.appendChild(div);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function sendMessage() {
-        const pergunta = chatInput.value.trim();
-        if (pergunta === "") return;
-        addMessage('user', pergunta);
-        const resposta = getResposta(pergunta);
-        addMessage('bot', resposta);
-        chatInput.value = '';
-    }
-
-    sendBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage();
     });
 </script>
 </body>

@@ -63,8 +63,7 @@ body.dark-mode .calculadora-card,
 body.dark-mode .insumos-card,
 body.dark-mode .form-contato,
 body.dark-mode .social-links,
-body.dark-mode .highlight-card,
-body.dark-mode .chat-widget {
+body.dark-mode .highlight-card {
     background: #1e2a1f;
     color: #e0e6d8;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -95,12 +94,6 @@ body.dark-mode .form-group textarea {
     background: #2a3a2a;
     border-color: #5a7a5a;
     color: #e0e6d8;
-}
-body.dark-mode .message.user {
-    background: #2b6e2f;
-}
-body.dark-mode .message.bot {
-    background: #3a5a3a;
 }
 
 /* ==================== HEADER ==================== */
@@ -189,6 +182,7 @@ body.dark-mode .message.bot {
     justify-content: center;
     z-index: 1001;
     cursor: pointer;
+    text-decoration: none;
     box-shadow: 0 6px 20px rgba(26, 115, 232, 0.3);
     transition: all 0.3s ease;
 }
@@ -230,105 +224,6 @@ body.dark-mode .message.bot {
 }
 .ia-fab:hover .ia-tooltip {
     opacity: 1;
-}
-
-/* ==================== CHAT WIDGET ==================== */
-.chat-widget {
-    position: fixed;
-    bottom: 110px;
-    right: 30px;
-    width: 350px;
-    max-width: calc(100vw - 40px);
-    background: white;
-    border-radius: 24px;
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
-    display: none;
-    flex-direction: column;
-    z-index: 1002;
-    overflow: hidden;
-    animation: fadeInUp 0.2s ease;
-}
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.chat-header {
-    background: linear-gradient(135deg, #2b6e2f, #1f4521);
-    color: white;
-    padding: 14px 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.chat-header h3 {
-    font-size: 1.1rem;
-}
-.chat-close {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    line-height: 1;
-}
-.chat-messages {
-    height: 350px;
-    overflow-y: auto;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-.message {
-    max-width: 85%;
-    padding: 10px 14px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    word-wrap: break-word;
-}
-.message.user {
-    background: #2b6e2f;
-    color: white;
-    align-self: flex-end;
-    border-bottom-right-radius: 6px;
-}
-.message.bot {
-    background: #f0f4ea;
-    color: #1e2f23;
-    align-self: flex-start;
-    border-bottom-left-radius: 6px;
-}
-.chat-input-area {
-    display: flex;
-    padding: 12px;
-    border-top: 1px solid #e0e0e0;
-    gap: 8px;
-}
-.chat-input-area input {
-    flex: 1;
-    padding: 10px 14px;
-    border-radius: 30px;
-    border: 1px solid #cbd5b0;
-    font-family: inherit;
-}
-.chat-input-area button {
-    background: #2b6e2f;
-    color: white;
-    border: none;
-    width: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.chat-input-area button:hover {
-    background: #1f4521;
 }
 
 /* ==================== HERO (resumido) ==================== */
@@ -466,7 +361,6 @@ body.dark-mode .message.bot {
 }
 
 /* ==================== CARDS, SOBRE, PRÁTICAS, IMPACTO, FERRAMENTAS, CONTATO, FOOTER ==================== */
-/* (aqui mantemos os mesmos estilos das versões anteriores, por questões de espaço eles são compactados mas funcionam) */
 .carousel-section { padding: 60px 0; }
 .praticas-highlight { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
 .highlight-card { background: white; border-radius: 28px; padding: 28px 20px; flex: 1 1 220px; text-align: center; transition: 0.2s; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
@@ -558,7 +452,6 @@ body.dark-mode .message.bot {
     .stat-card { min-width: 140px; padding: 16px; }
     .ia-fab { width: 55px; height: 55px; }
     .ia-icon { font-size: 1.8rem; }
-    .chat-widget { width: 300px; right: 20px; bottom: 95px; }
 }
 @media (max-width: 550px) {
     .hero-stats { gap: 15px; }
@@ -568,5 +461,4 @@ body.dark-mode .message.bot {
     .mapa-buttons { flex-direction: column; }
     .praticas-highlight { gap: 15px; }
     .highlight-card { flex: 1 1 100%; }
-    .chat-widget { width: calc(100% - 40px); right: 20px; bottom: 85px; }
 }
